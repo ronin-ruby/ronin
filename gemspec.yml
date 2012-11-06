@@ -63,7 +63,6 @@ dependencies:
   dm-types: ~> 1.2
   dm-migrations: ~> 1.2
   dm-validations: ~> 1.2
-  dm-serializer: ~> 1.2
   dm-aggregates: ~> 1.2
   dm-timestamps: ~> 1.2
   # DataMapper plugins:

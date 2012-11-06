@@ -18,7 +18,6 @@ gem 'jruby-openssl',	'~> 0.7', platforms: :jruby
 # gem 'dm-types',           DM_VERSION, git: "#{DM_URI}/dm-types.git"
 # gem 'dm-migrations',      DM_VERSION, git: "#{DM_URI}/dm-migrations.git"
 # gem 'dm-validations',     DM_VERSION, git: "#{DM_URI}/dm-validations.git"
-# gem 'dm-serializer',      DM_VERSION, git: "#{DM_URI}/dm-serializer.git"
 # gem 'dm-aggregates',      DM_VERSION, git: "#{DM_URI}/dm-aggregates.git"
 # gem 'dm-timestamps',      DM_VERSION, git: "#{DM_URI}/dm-timestamps.git"
 
