@@ -39,6 +39,9 @@ module Ronin
     # The vendor of the software
     belongs_to :vendor, :required => false
 
+    # The open ports running the software
+    has 0..n, :open_ports
+
     #
     # Converts the software to a String.
     #

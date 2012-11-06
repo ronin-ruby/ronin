@@ -41,6 +41,9 @@ module Ronin
     # The service detected on the port
     belongs_to :service, :required => false
 
+    # The software running on the open port
+    belongs_to :software, :required => false
+
     # any credentials used by the service running on the port
     has 0..n, :service_credentials
 
