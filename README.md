@@ -148,7 +148,7 @@ Remove a Database:
 
 ## Requirements
 
-* [Ruby] >= 1.8.7
+* [Ruby] >= 1.9.1
 * [DataMapper]:
   * [dm-sqlite-adapter] ~> 1.2
     * [libsqlite3]

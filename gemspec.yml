@@ -53,7 +53,7 @@ generated_files:
  - man/ronin-urls.1
  - man/ronin-wordlist.1
 
-required_ruby_version: ">= 1.8.7"
+required_ruby_version: ">= 1.9.1"
 
 dependencies:
   # DataMapper adapters:
