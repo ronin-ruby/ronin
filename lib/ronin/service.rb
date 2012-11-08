@@ -32,6 +32,9 @@ module Ronin
     # Primary key of the service
     property :id, Serial
 
+    # The protocol used to communicate with the service
+    property :protocol, String
+
     # The open ports running the service
     has 1..n, :open_ports
 

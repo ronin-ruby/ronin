@@ -45,6 +45,19 @@ module Ronin
         down do
         end
       end
+
+      migration :add_protocol_to_services_table do
+        up do
+          modify_table :ronin_services do
+            add_column :protocol, String
+          end
+
+          create_index :ronin_services, :protocol
+        end
+
+        down do
+        end
+      end
     end
   end
 end
