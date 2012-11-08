@@ -44,8 +44,11 @@ module Ronin
     # The software running on the open port
     belongs_to :software, :required => false
 
-    # any credentials used by the service running on the port
+    # Credentials used by the service running on the port
     has 0..n, :service_credentials
+
+    # Specifies whether the service requires SSL.
+    property :ssl, Boolean
 
     # When the open-port was last scanned
     property :last_scanned_at, Time

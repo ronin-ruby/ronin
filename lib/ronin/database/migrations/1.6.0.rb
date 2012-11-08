@@ -33,6 +33,18 @@ module Ronin
         down do
         end
       end
+
+      migration :add_ssl_to_open_ports_table,
+                :needs => :create_open_ports_table do
+        up do
+          modify_table :ronin_open_ports do
+            add_column :ssl, Boolean
+          end
+        end
+
+        down do
+        end
+      end
     end
   end
 end
