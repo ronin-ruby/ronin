@@ -129,19 +129,19 @@ module Ronin
       #   Console.start
       #   # >>
       #
-      # @example
-      #   Console.start(:var => 'hello')
-      #   # >> @var
-      #   # # => "hello"
+      # @example Start a console inside of an Object:
+      #   Console.start(exploit)
+      #   # >> self
+      #   # # => exploit
       #
-      # @example
+      # @example Start a console with a custom block:
       #   Console.start { @var = 'hello' }
       #   # >> @var
       #   # # => "hello"
       #
       # @api semipublic
       #
-      def Console.start(variables={},&block)
+      def Console.start(context=Context.new,&block)
         require 'ripl/color_result' if $stdout.tty?
         require 'ripl/short_errors' if @@short_errors
 
@@ -154,9 +154,6 @@ module Ronin
 
         # require any of the auto-load paths
         @@auto_load.each { |path| require path }
-
-        context = Context.new
-        context.instance_variables = variables
 
         # run any setup-blocks
         @@setup_blocks.each do |setup_block|
