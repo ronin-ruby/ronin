@@ -41,7 +41,6 @@ module Ronin
         #     -v, --[no-]verbose               Enable verbose output.
         #     -q, --[no-]quiet                 Disable verbose output.
         #         --[no-]silent                Silence all output.
-        #                                      Default: true
         #     -r [[PATTERN|/REGEXP/]:[METHOD|STRING*N[-M]]],
         #         --rule                       Fuzzing rules.
         #     -i, --input [FILE]               Input file to fuzz.

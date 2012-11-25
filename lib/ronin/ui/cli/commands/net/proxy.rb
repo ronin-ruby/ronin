@@ -40,7 +40,6 @@ module Ronin
           #     -v, --[no-]verbose               Enable verbose output.
           #     -q, --[no-]quiet                 Disable verbose output.
           #         --[no-]silent                Silence all output.
-          #                                      Default: true
           #     -t, --[no-]tcp                   TCP Proxy.
           #                                      Default: true
           #     -u, --[no-]udp                   UDP Proxy.
