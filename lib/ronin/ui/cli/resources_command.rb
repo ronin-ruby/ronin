@@ -20,6 +20,8 @@
 require 'ronin/ui/cli/model_command'
 require 'ronin/model/importable'
 
+require 'dm-serializer'
+
 module Ronin
   module UI
     module CLI

@@ -65,6 +65,7 @@ dependencies:
   dm-validations: ~> 1.2
   dm-aggregates: ~> 1.2
   dm-timestamps: ~> 1.2
+  dm-serializer: ~> 1.2
   # DataMapper plugins:
   dm-is-predefined: ~> 0.4
   # Library dependencies:
