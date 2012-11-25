@@ -17,6 +17,6 @@
 # along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-require 'ronin/ui/output'
+require 'ronin/ui/print'
 require 'ronin/ui/console'
 require 'ronin/ui/shell'
