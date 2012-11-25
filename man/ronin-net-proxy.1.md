@@ -77,9 +77,6 @@ Starts the Ronin TCP/UDP Proxy.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 ## AUTHOR
 
 Postmodern <postmodern.mod3@gmail.com>

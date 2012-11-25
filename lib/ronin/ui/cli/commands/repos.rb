@@ -36,7 +36,6 @@ module Ronin
         #      -v, --[no-]verbose               Enable verbose output.
         #      -q, --[no-]quiet                 Disable verbose output.
         #          --[no-]silent                Silence all output.
-        #          --[no-]color                 Enables color output.
         #      -D, --database [URI]             The Database URI.
         #          --domain [DOMAIN]            Domain to filter by.
         #      -n, --named [NAME]               Name to filter by.

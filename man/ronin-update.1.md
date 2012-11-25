@@ -24,9 +24,6 @@ Updates Ronin Repositories.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 ## EXAMPLES
 
 `ronin update repo`

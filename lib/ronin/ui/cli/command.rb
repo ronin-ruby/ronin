@@ -18,7 +18,6 @@
 #
 
 require 'ronin/ui/cli/printing'
-require 'ronin/ui/output'
 require 'ronin/support/inflector'
 
 require 'parameters'
@@ -272,13 +271,9 @@ module Ronin
         # @api semipublic
         #
         def setup
-          Output.verbose! if verbose?
-          Output.quiet!   if quiet?
-          Output.silent!  if silent?
-
-          Output.handler = if color? then Output::Terminal::Color
-                           else           Output::Terminal::Raw
-                           end
+          UI::Printing.verbose! if verbose?
+          UI::Printing.quiet!   if quiet?
+          UI::Printing.silent!  if silent?
         end
 
         #
@@ -444,10 +439,6 @@ module Ronin
 
         option :silent, :type         => true,
                         :description  => 'Silence all output'
-
-        option :color, :type        => true,
-                       :default     => proc { $stdout.tty? },
-                       :description => 'Enables color output'
 
         #
         # Enumerates through the options define by every sub-class.

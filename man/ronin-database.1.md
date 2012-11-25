@@ -19,9 +19,6 @@ Manages the Ronin Database.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 `-a`, `--add` *NAME*
 	Adds a new Database Repository.
 

@@ -20,7 +20,7 @@
 require 'ronin/script/exceptions/not_built'
 require 'ronin/script/exceptions/build_failed'
 require 'ronin/script/testable'
-require 'ronin/ui/output/helpers'
+require 'ronin/ui/printing'
 
 module Ronin
   module Script
@@ -30,8 +30,7 @@ module Ronin
     # @since 1.1.0
     #
     module Buildable
-      include Testable,
-              UI::Output::Helpers
+      include Testable, UI::Printing
 
       #
       # Initializes the buildable script.

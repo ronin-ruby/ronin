@@ -38,7 +38,6 @@ module Ronin
         #      -v, --[no-]verbose               Enable verbose output.
         #      -q, --[no-]quiet                 Disable verbose output.
         #          --[no-]silent                Silence all output.
-        #          --[no-]color                 Enables color output.
         #      -a, --add [NAME]
         #      -s, --set [NAME]
         #      -r, --remove [NAME]

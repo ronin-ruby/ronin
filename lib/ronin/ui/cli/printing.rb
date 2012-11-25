@@ -17,7 +17,7 @@
 # along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-require 'ronin/ui/output/helpers'
+require 'ronin/ui/printing'
 
 module Ronin
   module UI
@@ -28,7 +28,7 @@ module Ronin
       # @since 1.4.0
       #
       module Printing
-        include Output::Helpers
+        include UI::Printing
 
         #
         # Initializes Printing settings.

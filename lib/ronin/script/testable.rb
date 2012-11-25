@@ -18,7 +18,7 @@
 #
 
 require 'ronin/script/exceptions/test_failed'
-require 'ronin/ui/output/helpers'
+require 'ronin/ui/printing'
 
 module Ronin
   module Script
@@ -28,7 +28,7 @@ module Ronin
     # @since 1.1.0
     #
     module Testable
-      include UI::Output::Helpers
+      include UI::Printing
 
       #
       # Initializes the testable script.

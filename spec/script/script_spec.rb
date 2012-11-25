@@ -43,8 +43,8 @@ describe Script do
     expect(subject.included_modules).to include(Parameters)
   end
 
-  it "should include UI::Output::Helpers" do
-    expect(subject.included_modules).to include(UI::Output::Helpers)
+  it "should include UI::Printing" do
+    expect(subject.included_modules).to include(UI::Printing)
   end
 
   it "should add the type property to the model" do

@@ -24,7 +24,7 @@ require 'ronin/model/has_description'
 require 'ronin/model/has_version'
 require 'ronin/model/has_license'
 require 'ronin/model/has_authors'
-require 'ronin/ui/output/helpers'
+require 'ronin/ui/printing'
 
 require 'object_loader'
 require 'data_paths/finders'
@@ -44,7 +44,7 @@ module Ronin
   # @since 1.1.0
   #
   module Script
-    include UI::Output::Helpers
+    include UI::Printing
 
     #
     # Adds the following to the Class.

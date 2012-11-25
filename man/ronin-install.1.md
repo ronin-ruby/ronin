@@ -24,9 +24,6 @@ Installs Ronin Repositories.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 `--[no-]rsync`
 	Installs the Repository using Rsync.
 

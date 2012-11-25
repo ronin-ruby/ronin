@@ -37,7 +37,6 @@ module Ronin
         #      -v, --[no-]verbose               Enable verbose output.
         #      -q, --[no-]quiet                 Disable verbose output.
         #          --[no-]silent                Silence all output.
-        #          --[no-]color                 Enables color output.
         #      -i, --input [FILE]               Input file.
         #      -o, --output [PATH]              Output wordlist file.
         #      -m, --mutations [STRING:SUB]     Default: {}

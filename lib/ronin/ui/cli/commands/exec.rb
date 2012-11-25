@@ -17,7 +17,7 @@
 # along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-require 'ronin/ui/output/helpers'
+require 'ronin/ui/cli/printing'
 require 'ronin/repository'
 require 'ronin/database'
 
@@ -34,7 +34,7 @@ module Ronin
         #
         class Exec
 
-          include Output::Helpers
+          include Printing
 
           #
           # Initializes the `exec` command.

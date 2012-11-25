@@ -36,7 +36,6 @@ module Ronin
         #      -v, --[no-]verbose               Enable verbose output.
         #      -q, --[no-]quiet                 Disable verbose output.
         #          --[no-]silent                Silence all output.
-        #          --[no-]color                 Enables color output.
         #          --database [URI]             The Database URI.
         #          --[no-]csv                   CSV output.
         #          --[no-]xml                   XML output.

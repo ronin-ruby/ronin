@@ -17,7 +17,7 @@
 # along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-require 'ronin/ui/output/output'
+require 'ronin/ui/printing'
 
 require 'dm-migrations'
 
@@ -53,7 +53,7 @@ module Ronin
         # @api private
         #
         def initialize(name,options={},&block)
-          options[:verbose] = UI::Output.verbose?
+          options[:verbose] = UI::Printing.verbose?
 
           @needs = Array(options.delete(:needs)).uniq
 

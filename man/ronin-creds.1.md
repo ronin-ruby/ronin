@@ -19,9 +19,6 @@ Lists Credentials.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 `-D`, `--database` *URI*
 	The database to URI (`mysql://user:password@host/ronin`).
 

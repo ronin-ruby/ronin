@@ -20,9 +20,6 @@ to output files, run in commands or sent to TCP/UDP services.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 `-i`, `--input` *FILE*
 	The input text FILE to parse. Data will be read from `STDIN` by default.
 

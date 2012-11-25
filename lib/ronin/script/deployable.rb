@@ -19,7 +19,7 @@
 
 require 'ronin/script/exceptions/deploy_failed'
 require 'ronin/script/testable'
-require 'ronin/ui/output/helpers'
+require 'ronin/ui/printing'
 
 module Ronin
   module Script
@@ -29,8 +29,7 @@ module Ronin
     # @since 1.1.0
     #
     module Deployable
-      include Testable,
-              UI::Output::Helpers
+      include Testable, UI::Printing
 
       #
       # Initializes the deployable script.

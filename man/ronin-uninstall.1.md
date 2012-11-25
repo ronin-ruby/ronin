@@ -24,9 +24,6 @@ Uninstalls a Ronin Repositories.
 `--[no-]silent`
 	Silence all output.
 
-`--[no-]color`
-	Enables color output.
-
 ## EXAMPLES
 
 `ronin uninstall repo`
