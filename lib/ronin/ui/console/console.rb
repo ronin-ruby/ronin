@@ -116,14 +116,14 @@ module Ronin
       #
       # Starts a Console.
       #
-      # @param [Hash{Symbol => Object}] variables
-      #   Instance variable names and values to set within the console.
+      # @param [Object] context
+      #   The context for the console.
       #
       # @yield []
-      #   The block to be ran within the Console, after it has been setup.
+      #   The block to be ran within the console, after it has been setup.
       #
       # @return [Console]
-      #   The instance context the Console ran within.
+      #   The instance context the console ran within.
       #
       # @example
       #   Console.start
