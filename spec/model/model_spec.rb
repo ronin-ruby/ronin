@@ -69,35 +69,4 @@ describe Model do
 
     after { subject.destroy }
   end
-
-  describe "#humanize_attributes" do
-    let(:model) { base_model }
-
-    subject { model.new(:name => 'joe', :age => 21) }
-
-    it "should humanize the attributes of a model" do
-      expect(subject.humanize_attributes).to be == {
-        'Name' => 'joe',
-        'Age' => '21'
-      }
-    end
-
-    it "should exclude certain attributes to humanize" do
-      expect(subject.humanize_attributes(:exclude => [:name])).to be == {
-        'Age' => '21'
-      }
-    end
-
-    it "should filter out nil values" do
-      subject.age = nil
-
-      expect(subject.humanize_attributes).to be == {'Name' => 'joe'}
-    end
-
-    it "should filter out empty values" do
-      subject.name = ''
-
-      expect(subject.humanize_attributes).to be == {'Age' => '21'}
-    end
-  end
 end

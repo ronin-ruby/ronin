@@ -53,7 +53,6 @@ module Ronin
 
       # include Model types / methods
       base.send :include, Model::Types
-      base.send :include, InstanceMethods
       base.send :extend,  ClassMethods
     end
 
@@ -88,76 +87,6 @@ module Ronin
         resources.each { |resource| resource.send :initialize }
 
         return resources
-      end
-    end
-
-    #
-    # Instance methods that are added when {Model} is included into a class.
-    #
-    module InstanceMethods
-      #
-      # Formats the attributes of the model into human readable names
-      # and values.
-      #
-      # @param [Hash] options
-      #   Additional options.
-      #
-      # @option options [Array<Symbol>] :exclude ([])
-      #   A list of attribute names to exclude.
-      #
-      # @yield [name, value]
-      #   If a block is given, it will be passed the name and humanized
-      #   value of each attribute.
-      #
-      # @yieldparam [String] name
-      #   The humanized name of the attribute.
-      #
-      # @yieldparam [String] value
-      #   The human readable value of the attribute.
-      #
-      # @return [Hash{String => String}]
-      #   A hash of the humanly readable names and values of the attributes.
-      #
-      # @api semipublic
-      #
-      def humanize_attributes(options={})
-        exclude = [:id, :type]
-
-        if options[:exclude]
-          exclude += options[:exclude]
-        end
-
-        formatter = lambda { |value|
-          case value
-          when Array
-            value.map(&formatter).join(', ')
-          when Symbol
-            DataMapper::Inflector.humanize(value)
-          else
-            value.to_s
-          end
-        }
-
-        formatted = {}
-
-        self.attributes.each do |name,value|
-          next if (value.nil? || (value.respond_to?(:empty?) && value.empty?))
-
-          unless (exclude.include?(name) || value.nil?)
-            name = name.to_s
-
-            unless name[-3..-1] == '_id'
-              name = DataMapper::Inflector.humanize(name)
-              value = formatter.call(value)
-
-              yield name, value if block_given?
-
-              formatted[name] = value
-            end
-          end
-        end
-
-        return formatted
       end
     end
   end
