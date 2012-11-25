@@ -20,3 +20,4 @@
 require 'ronin/ui/print'
 require 'ronin/ui/console'
 require 'ronin/ui/shell'
+require 'ronin/ui/cli'
