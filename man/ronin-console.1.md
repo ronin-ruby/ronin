@@ -10,9 +10,6 @@ Start the Ronin Console.
 
 ## OPTIONS
 
-`--[no-]color`
-	Enables color output.
-
 `-q`, `--[no-]quiet`
 	Disable verbose output.
 

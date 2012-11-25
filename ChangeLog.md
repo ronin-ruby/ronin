@@ -235,7 +235,7 @@
 * Repositories can now cache/load scripts from the `scripts/` directory.
 * Disable {Ronin::UI::Console.short_errors?} if the `VERBOSE` environment
   variable is set.
-* Disable {Ronin::UI::Console.color?} if the `STDOUT` is a tty.
+* Disable `Ronin::UI::Console.color?` if the `STDOUT` is a tty.
 * Set `Ronin::UI::Output.handler` to `Ronin::UI::Output::Terminal::Raw`,
   when `STDOUT` is not a tty.
 * Enable `Ronin::UI::Output.verbose?` if `$VERBOSE` or `$DEBUG` are set.

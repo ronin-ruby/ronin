@@ -39,7 +39,6 @@ module Ronin
         #      -v, --[no-]verbose               Enable verbose output.
         #      -q, --[no-]quiet                 Disable verbose output.
         #      --[no-]silent                    Silence all output.
-        #      --[no-]color                     Enables color output.
         #      -D, --database [URI]             The database to URI.
         #      -r, --require [PATH]             Ruby files to require.
         #                                       Default: []
@@ -75,7 +74,6 @@ module Ronin
           def setup
             super
 
-            UI::Console.color = color?
             UI::Console.short_errors = !backtrace?
 
             @require.each do |path|

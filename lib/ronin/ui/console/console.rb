@@ -36,41 +36,9 @@ module Ronin
       # The history file for the Console session
       HISTORY_FILE = File.join(Config::PATH,'console.log')
 
-      @@color        = !(STDOUT.tty?)
       @@short_errors = !(ENV.has_key?('VERBOSE'))
       @@auto_load    = []
       @@setup_blocks = []
-
-      #
-      # Determines whether colorized output will be enabled.
-      #
-      # @return [Boolean]
-      #   Specifies whether colorized output will be enabled.
-      #
-      # @since 1.0.0
-      #
-      # @api semipublic
-      #
-      def Console.color?
-        @@color
-      end
-
-      #
-      # Enables or disables colorized output.
-      #
-      # @param [Boolean] mode
-      #   The new colorized output mode.
-      #
-      # @return [Boolean]
-      #   The colorized output mode.
-      #
-      # @since 1.0.0
-      #
-      # @api semipublic
-      #
-      def Console.color=(mode)
-        @@color = mode
-      end
 
       #
       # Determines whether one-line errors will be printed, instead of full
@@ -174,7 +142,7 @@ module Ronin
       # @api semipublic
       #
       def Console.start(variables={},&block)
-        require 'ripl/color_result' if @@color
+        require 'ripl/color_result' if $stdout.tty?
         require 'ripl/short_errors' if @@short_errors
 
         require 'ronin'
