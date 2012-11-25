@@ -18,7 +18,6 @@
 #
 
 require 'ronin/ui/cli/command'
-require 'ronin/ui/output'
 require 'ronin/ui/console'
 require 'ronin/database'
 require 'ronin/version'
