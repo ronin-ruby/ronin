@@ -22,8 +22,8 @@ gem 'jruby-openssl',	'~> 0.7', platforms: :jruby
 # gem 'dm-timestamps',      DM_VERSION, git: "#{DM_URI}/dm-timestamps.git"
 
 # Library dependencies
-# gem 'ronin-support',	'~> 0.5', git: "#{RONIN_URI}/ronin-support.git",
-#                                 branch: 'main'
+gem 'ronin-support',	'~> 0.6', git: "#{RONIN_URI}/ronin-support.git",
+                                branch: '0.6.0'
 
 group :development do
   gem 'rake'
