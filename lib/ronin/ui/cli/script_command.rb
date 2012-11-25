@@ -100,26 +100,9 @@ module Ronin
         #
         def setup
           super
-
           load!
+
           param_option_parser.parse(@param_options)
-        end
-
-        #
-        # Loads the script, sets its parameters and runs the script.
-        #
-        # @since 1.1.0.
-        #
-        # @api semipublic
-        #
-        def execute
-          if @console
-            print_info "Starting the console with @script set ..."
-
-            UI::Console.start(:script => @script)
-          else
-            @script.run
-          end
         end
 
         protected

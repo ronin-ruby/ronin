@@ -260,17 +260,6 @@ module Ronin
       end
 
       #
-      # Default method which invokes the script.
-      #
-      # @param [Array] arguments
-      #   Optional arguments.
-      #
-      # @since 1.1.0
-      #
-      def run(*arguments)
-      end
-
-      #
       # Converts the script to a String.
       #
       # @return [String]
