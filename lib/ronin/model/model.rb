@@ -48,7 +48,6 @@ module Ronin
 
       # include DataMapper plugins
       base.send :include, DataMapper::Migrations,
-                          # DataMapper::Serialize,
                           DataMapper::Timestamps
 
       # include Model types / methods
