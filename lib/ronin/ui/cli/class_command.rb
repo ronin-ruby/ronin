@@ -30,13 +30,13 @@ module Ronin
       class ClassCommand < Command
 
         # The object created from the Class
-        attr_reader :object
+        attr_reader :instance
 
         #
         # Initializes the class command.
         #
         # @param [Hash] options
-        #   Options for the class command and for the object.
+        #   Options for the class command and for the instance.
         #
         # @raise [TypeError]
         #   The class associated with the command does not support Parameters.
@@ -48,8 +48,8 @@ module Ronin
             raise(TypeError,"#{command_class} does not include Parameters")
           end
 
-          @object = self.class.command_class.new()
-          @object.params = options
+          @instance = self.class.command_class.new()
+          @instance.params = options
         end
 
         protected
@@ -123,7 +123,7 @@ module Ronin
         #
         def option_parser
           super do |opts|
-            @object.each_param do |param|
+            @instance.each_param do |param|
               Parameters::Options.define(opts,param)
             end
 
