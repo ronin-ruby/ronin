@@ -50,6 +50,9 @@ to output files, run in commands or sent to TCP/UDP services.
 `-u`, `--udp` *HOST*:*PORT*
 	The UDP service to send the fuzzed data to.
 
+`-p`, `--pause` *SECONDS*
+  Pause in between mutations.
+
 ## EXAMPLES
 
 `ronin fuzzer -i http_request.txt -o bad.txt -r unix_path:bad_strings`

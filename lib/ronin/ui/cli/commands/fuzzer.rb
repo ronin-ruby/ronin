@@ -49,6 +49,7 @@ module Ronin
         #         --command                    Template command to run.
         #     -t, --tcp [HOST:PORT]            TCP service to fuzz.
         #     -u, --udp [HOST:PORT]            UDP service to fuzz.
+        #     -p, --pause [SECONDS]            Pause in between mutations.
         #
         # ## Examples
         #
@@ -89,6 +90,11 @@ module Ronin
                        :flag        => '-u',
                        :usage       => 'HOST:PORT',
                        :description => 'UDP service to fuzz'
+
+          option :pause, :type        => Float,
+                         :flag        => '-p',
+                         :usage       => 'SECONDS',
+                         :description => 'Pause in between mutations'
 
           examples [
             "ronin fuzzer -i request.txt -o bad.txt -r unix_path:bad_strings"
@@ -137,9 +143,9 @@ module Ronin
 
             fuzzer = Fuzzing::Fuzzer.new(@rules)
             fuzzer.each(data).each_with_index do |string,index|
-              index = index + 1
+              method.call(string,index + 1)
 
-              method.call(string,index)
+              sleep(pause) if pause?
             end
           end
 
