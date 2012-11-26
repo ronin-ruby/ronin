@@ -61,8 +61,9 @@ module Ronin
           def self.start(argv=ARGV)
             case argv[0]
             when '-h', '--help', nil
-              puts "Usage:\n  ronin-exec SCRIPT [ARGS...]\n\n"
-              puts "Runs a script from a Ronin Repository"
+              puts 'Usage:'
+              puts '  ronin-exec SCRIPT [ARGS...]'
+              puts 'Runs a script from a Ronin Repository'
               return false
             end
 

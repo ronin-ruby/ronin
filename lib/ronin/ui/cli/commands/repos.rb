@@ -118,7 +118,7 @@ module Ronin
               puts "SCM: #{repo.scm}" if repo.scm
 
               if repo.verbose?
-                putc "\n"
+                spacer
 
                 puts "Title: #{repo.title}" if repo.title
                 puts "URI: #{repo.uri}" if repo.uri
@@ -131,12 +131,10 @@ module Ronin
                   puts "Executables: #{executables.join(', ')}"
                 end
 
-                putc "\n"
+                spacer
 
                 unless repo.script_paths.empty?
-                  print_title 'Cached Files'
-
-                  indent do
+                  print_section 'Cached Files' do
                     repo.script_paths.each do |script_path|
                       puts script_path.path
                     end
@@ -144,14 +142,17 @@ module Ronin
                 end
 
                 if repo.description
-                  print_title "Description"
+                  puts 'Description:'
+                  spacer
 
-                  indent { puts "#{repo.description}\n\n" }
+                  indent do
+                    repo.description.each_line { |line| puts line }
+                  end
                 else
-                  putc "\n"
+                  spacer
                 end
               else
-                putc "\n"
+                spacer
               end
             end
           end

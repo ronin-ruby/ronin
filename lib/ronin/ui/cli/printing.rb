@@ -158,9 +158,7 @@ module Ronin
         # @api semipublic
         #
         def print_hash(hash,options={})
-          align = hash.keys.map { |name|
-            name.to_s.length
-          }.max
+          align = hash.keys.map { |name| name.to_s.length }.max
 
           print_title(options[:title]) if options[:title]
 

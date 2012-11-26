@@ -40,7 +40,7 @@ describe Model::HasDescription do
         three
       }
 
-      expect(subject.description).to eq("test\nthree")
+      expect(subject.description).to eq("test#{$/}three")
     end
 
     it "should preserve non-bordering empty lines" do
@@ -50,7 +50,7 @@ describe Model::HasDescription do
         four
       }
 
-      expect(subject.description).to eq("test\n\nfour")
+      expect(subject.description).to eq("test#{$/}#{$/}four")
     end
   end
 

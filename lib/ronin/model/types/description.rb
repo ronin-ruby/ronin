@@ -51,7 +51,7 @@ module Ronin
             sanitized_lines << line.strip
           end
 
-          return sanitized_lines.join("\n").strip
+          return sanitized_lines.join($/).strip
         end
 
       end
