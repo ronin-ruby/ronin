@@ -69,7 +69,7 @@ module Ronin
         # @since 1.6.0
         #
         def spacer
-          puts $\
+          puts
         end
 
         #
@@ -93,7 +93,8 @@ module Ronin
         # @api semipublic
         #
         def print_title(title)
-          puts "[ #{title} ]\n"
+          puts "[ #{title} ]"
+          spacer
         end
 
         #
@@ -110,6 +111,7 @@ module Ronin
         def print_section(title,&block)
           print_title(title)
           indent(&block)
+          spacer
         end
 
         #
@@ -135,7 +137,7 @@ module Ronin
             array.each { |value| puts value }
           end
 
-          puts if options[:title]
+          spacer if options[:title]
           return nil
         end
 
@@ -169,7 +171,7 @@ module Ronin
             end
           end
 
-          puts if options[:title]
+          spacer if options[:title]
           return nil
         end
       end
