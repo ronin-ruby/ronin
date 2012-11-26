@@ -43,15 +43,9 @@ module Ronin
         # @api private
         #
         def typecast(value)
-          return nil if value.nil?
-
-          sanitized_lines = []
-
-          value.to_s.each_line do |line|
-            sanitized_lines << line.strip
+          unless value.nil?
+            value.to_s.lines.map(&:strip).join($/).strip
           end
-
-          return sanitized_lines.join($/).strip
         end
 
       end
