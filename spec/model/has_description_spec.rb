@@ -20,40 +20,6 @@ describe Model::HasDescription do
     end
   end
 
-  describe "#description" do
-    subject { model.new }
-
-    it "should allow the setting of the description" do
-      subject.description = 'test one'
-      expect(subject.description).to eq('test one')
-    end
-
-    it "should strip leading and tailing white-space" do
-      subject.description = %{   test two    }
-
-      expect(subject.description).to eq('test two')
-    end
-
-    it "should strip leading and tailing white-space from each line" do
-      subject.description = %{
-        test
-        three
-      }
-
-      expect(subject.description).to eq("test#{$/}three")
-    end
-
-    it "should preserve non-bordering empty lines" do
-      subject.description = %{
-        test
-
-        four
-      }
-
-      expect(subject.description).to eq("test#{$/}#{$/}four")
-    end
-  end
-
   describe ".describing" do
     subject { model }
 
