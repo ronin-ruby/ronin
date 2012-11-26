@@ -32,14 +32,16 @@ describe Model::Types::Description do
     context "when given a multi-line String" do
       let(:lines) do
         [
+          '',
           '  foo  ',
           '  bar  ',
-          '  baz  '
+          '  baz  ',
+          ''
         ]
       end
 
-      let(:string)    { lines.join($/)              }
-      let(:sanitized) { lines.map(&:strip).join($/) }
+      let(:string)    { lines.join($/)                    }
+      let(:sanitized) { lines.map(&:strip).join($/).strip }
 
       it "should strip leading and trailing whitespace from each line" do
         subject.typecast(string).should == sanitized
