@@ -62,6 +62,17 @@ module Ronin
         end
 
         #
+        # Prints an empty line.
+        #
+        # @api semipublic
+        #
+        # @since 1.6.0
+        #
+        def spacer
+          puts $\
+        end
+
+        #
         # Print the given messages with indentation.
         #
         # @param [Array] messages
