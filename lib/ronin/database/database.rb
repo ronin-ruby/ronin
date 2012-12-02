@@ -102,35 +102,6 @@ module Ronin
     end
 
     #
-    # Saves the Database configuration to `CONFIG_FILE`.
-    #
-    # @yield []
-    #   If a block is given, it will be called before the database
-    #   configuration is saved.
-    #
-    # @return [true]
-    #
-    # @since 1.0.0
-    #
-    # @api private
-    #
-    def self.save
-      yield if block_given?
-
-      File.open(CONFIG_FILE,'w') do |file|
-        hash = {}
-        
-        repositories.each do |name,value|
-          hash[name.to_sym] = value
-        end
-
-        YAML.dump(hash,file)
-      end
-
-      return true
-    end
-
-    #
     # Returns or sets up the Database log.
     #
     # @param [Hash] options
