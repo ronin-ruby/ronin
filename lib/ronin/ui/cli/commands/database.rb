@@ -119,7 +119,7 @@ module Ronin
               end
 
               return
-            elsif add? || set? || remove?
+            elsif (add? || set? || remove?)
               config = YAML::Store.new(Ronin::Database::CONFIG_FILE)
 
               config.transaction do
