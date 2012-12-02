@@ -21,6 +21,7 @@ require 'ronin/ui/cli/command'
 require 'ronin/database'
 
 require 'addressable/uri'
+require 'yaml/store'
 
 module Ronin
   module UI
@@ -118,11 +119,41 @@ module Ronin
               end
 
               return
-            end
+            elsif add? || set? || remove?
+              config = YAML::Store.new(Ronin::Database::CONFIG_FILE)
 
-            if    add?    then add_repository
-            elsif set?    then set_repository
-            elsif remove? then remove_repository
+              config.transaction do
+                if add?
+                  if config[add]
+                    print_error "Database repisotory #{add} already exists"
+                    exit -1
+                  end
+
+                  config[add] = repository_uri
+
+                  print_info "Database repository #{add} added."
+                elsif set?
+                  unless config[set]
+                    print_error "Unknown Database repository #{set}"
+                    exit -1
+                  end
+
+                  config[set] = repository_uri
+
+                  print_info "Database repository #{set} updated."
+                elsif remove?
+                  unless config[remove]
+                    print_error "Unknown Database repository #{remove}"
+                    exit -1
+                  end
+
+                  config.delete(remove)
+
+                  print_info "Database repository #{remove} removed."
+                end
+
+                config[:default] ||= Ronin::Database::DEFAULT_REPOSITORY
+              end
             else
               Ronin::Database.repositories.each do |name,uri|
                 print_hash uri, :title => name
@@ -151,49 +182,6 @@ module Ronin
                 :database => (@database || @path)
               }
             end
-          end
-
-          #
-          # Adds a new Database repository.
-          #
-          def add_repository
-            Ronin::Database.save do
-              Ronin::Database.repositories[@add] = repository_uri
-            end
-
-            print_info "Database repository #{@add} added."
-          end
-
-          #
-          # Sets the URI for an existing Database repository.
-          #
-          def set_repository
-            unless Ronin::Database.repository?(@set)
-              print_error "Unknown Database repository #{@set}"
-              exit -1
-            end
-
-            Ronin::Database.save do
-              Ronin::Database.repositories[@set] = repository_uri
-            end
-
-            print_info "Database repository #{@set} updated."
-          end
-
-          #
-          # Removes an existing Database repository.
-          #
-          def remove_repository
-            unless Ronin::Database.repository?(@remove)
-              print_error "Unknown Database repository #{@remove}"
-              exit -1
-            end
-
-            Ronin::Database.save do
-              Ronin::Database.repositories.delete(@remove)
-            end
-
-            print_info "Database repository #{@remove} removed."
           end
 
         end
