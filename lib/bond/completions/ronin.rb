@@ -19,7 +19,6 @@
 
 require 'ronin/config'
 require 'ronin/ui/console/commands'
-require 'ronin/ui/console/shell'
 
 require 'set'
 
@@ -32,28 +31,6 @@ complete(:on => Ronin::UI::Console::Commands::PATTERN) do |cmd|
   end
 
   commands
-end
-
-complete(:on => Ronin::UI::Console::Shell::PATTERN) do |cmd|
-  name   = cmd[1..-1]
-  glob   = "#{name}*"
-  paths  = Set[]
-
-  # search through $PATH for similar program names
-  Ronin::Config::BIN_DIRS.each do |dir|
-    Dir.glob(File.join(dir,glob)) do |path|
-      if (File.file?(path) && File.executable?(path))
-        paths << "!#{File.basename(path)}"
-      end
-    end
-  end
-
-  # add the black-listed keywords last
-  Ronin::UI::Console::Shell::BLACKLIST.each do |keyword|
-    paths << "!#{keyword}" if keyword.start_with?(name)
-  end
-
-  paths
 end
 
 #

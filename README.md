@@ -171,6 +171,7 @@ Remove a Database:
 * [ripl-auto_indent] ~> 0.1
 * [ripl-short_errors] ~> 0.1
 * [ripl-color_result] ~> 0.3
+* [ripl-shell_commands] ~> 0.1
 * [ronin-support] ~> 0.5
 
 ## Install
@@ -244,4 +245,5 @@ along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 [ripl-auto_indent]: https://github.com/janlelis/ripl-auto_indent#readme
 [ripl-short_errors]: https://rubygems.org/gems/ripl-short_errors
 [ripl-color_result]: https://github.com/janlelis/ripl-color_result#readme
+[ripl-shell_commands]: https://github.com/postmodern/ripl-shell_commands#readme
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme

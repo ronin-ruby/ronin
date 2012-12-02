@@ -19,4 +19,3 @@
 
 require 'ronin/ui/console/console'
 require 'ronin/ui/console/commands'
-require 'ronin/ui/console/shell'

@@ -80,6 +80,7 @@ dependencies:
   ripl-auto_indent: ~> 0.1
   ripl-short_errors: ~> 0.1
   ripl-color_result: ~> 0.3
+  ripl-shell_commands: ~> 0.1
   # Ronin dependencies:
   ronin-support: ~> 0.5, >= 0.5.2
 

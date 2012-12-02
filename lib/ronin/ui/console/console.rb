@@ -24,6 +24,7 @@ require 'ronin/repository'
 require 'ripl'
 require 'ripl/multi_line'
 require 'ripl/auto_indent'
+require 'ripl/shell_commands'
 
 module Ronin
   module UI
