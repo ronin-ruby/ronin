@@ -174,7 +174,7 @@ module Ronin
               uri = Addressable::URI.parse(@uri)
 
               {
-                :adapter => uri.scheme,
+                :adapter  => uri.scheme,
                 :host     => uri.host,
                 :port     => uri.port,
                 :user     => uri.user,
