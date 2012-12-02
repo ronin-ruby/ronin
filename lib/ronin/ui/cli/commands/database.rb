@@ -171,7 +171,16 @@ module Ronin
           #
           def repository_uri
             if uri?
-              Addressable::URI.parse(@uri).to_hash
+              uri = Addressable::URI.parse(@uri)
+
+              {
+                :adapter => uri.scheme,
+                :host     => uri.host,
+                :port     => uri.port,
+                :user     => uri.user,
+                :password => uri.password,
+                :database => uri.path
+              }
             else
               {
                 :adapter  => @adapter,
