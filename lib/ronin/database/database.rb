@@ -66,8 +66,6 @@ module Ronin
     #
     def self.repositories
       if @repositories.empty?
-        @repositories[:default] = DEFAULT_REPOSITORY
-
         if File.file?(CONFIG_FILE)
           config = YAML.load_file(CONFIG_FILE)
 
@@ -79,6 +77,8 @@ module Ronin
             @repositories[name.to_sym] = uri
           end
         end
+
+        @repositories[:default] ||= DEFAULT_REPOSITORY
       end
 
       return @repositories
