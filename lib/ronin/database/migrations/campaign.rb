@@ -52,12 +52,7 @@ module Ronin
             add_column :updated_at, Time
           end
 
-          require 'ronin/campaign'
-
-          # set the updated_at column to created_at
-          Campaign.each do |campaign|
-            campaign.update(:updated_at => campaign.created_at)
-          end
+          adapter.execute('UPDATE ronin_campaigns SET updated_at=created_at')
         end
       end
     end

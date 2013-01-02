@@ -59,11 +59,13 @@ module Ronin
             add_column :created_at, Time
           end
 
-          require 'ronin/target'
+          campaigns = adapter.select('SELECT id,created_at FROM ronin_campaigns')
 
-          # set the updated_at column to the created_at of the Campaign
-          Target.each do |target|
-            target.update(:created_at => target.campaign.created_at)
+          campaigns.each do |row|
+            adapter.execute(
+              'UPDATE ronin_targets SET updated_at=? WHERE campaign_id=?',
+              row.created_at, row.id
+            )
           end
         end
       end
