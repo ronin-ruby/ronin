@@ -54,6 +54,9 @@ module Ronin
 
           adapter.execute('UPDATE ronin_campaigns SET updated_at=created_at')
         end
+
+        down do
+        end
       end
     end
   end
