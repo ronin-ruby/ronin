@@ -41,6 +41,36 @@ module Ronin
           drop_table :ronin_arches
         end
       end
+
+      #
+      # 1.6.0
+      #
+      migration :populate_arches_table do
+        up do
+          [
+            # name, endian, address_length
+            ['x86', 'little', 4],
+            ['x86-64', 'little', 8],
+            ['ia64', 'little', 8],
+            ['ppc', 'big', 4],
+            ['ppc64', 'big', 8],
+            ['sparc', 'big', 4],
+            ['sparc64', 'big', 8],
+            ['mips_le', 'little', 4],
+            ['mips_be', 'big', 4],
+            ['arm_le', 'little', 4],
+            ['arm_be', 'big', 4]
+          ].each do |name,endian,address_length|
+            adapter.execute(
+              'INSERT OR IGNORE into ronin_arches (name,endian,address_length) VALUES (?,?,?)',
+              name, endian, address_length
+            )
+          end
+        end
+
+        down do
+        end
+      end
     end
   end
 end
