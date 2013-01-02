@@ -99,6 +99,12 @@ module Ronin
               :description => 'GNU Public License v2.0',
               :url => 'https://www.gnu.org/licenses/gpl-2.0.txt'
 
+    # Lesser General Public License, version 2.1
+    predefine :lgpl2,
+              :name => 'LGPL-2.1',
+              :description => 'GNU Lesser General Public License v2.1',
+              :url => 'http://www.gnu.org/licenses/lgpl-2.1.txt'
+
     # General Public License, version 3
     predefine :gpl3,
               :name => 'GPL-3',
