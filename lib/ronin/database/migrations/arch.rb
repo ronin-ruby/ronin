@@ -17,45 +17,28 @@
 # along with Ronin.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/database/migrations/1.0.0'
+require 'ronin/database/migrations/migrations'
 
 module Ronin
   module Database
     module Migrations
-      migration :add_software_id_to_open_ports_table,
-                :needs => :create_open_ports_table do
+      #
+      # 1.0.0
+      #
+      migration :create_arches_table do
         up do
-          modify_table :ronin_open_ports do
-            add_column :software_id, Integer
+          create_table :ronin_arches do
+            column :id, Integer, :serial => true
+            column :name, String, :not_null => true
+            column :endian, String, :not_null => true
+            column :address_length, Integer, :not_null => true
           end
+
+          create_index :ronin_arches, :name, :unique => true
         end
 
         down do
-        end
-      end
-
-      migration :add_ssl_to_open_ports_table,
-                :needs => :create_open_ports_table do
-        up do
-          modify_table :ronin_open_ports do
-            add_column :ssl, Boolean
-          end
-        end
-
-        down do
-        end
-      end
-
-      migration :add_protocol_to_services_table do
-        up do
-          modify_table :ronin_services do
-            add_column :protocol, String
-          end
-
-          create_index :ronin_services, :protocol
-        end
-
-        down do
+          drop_table :ronin_arches
         end
       end
     end

@@ -17,7 +17,7 @@
 # along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-require 'ronin/database/migrations/graph'
+require 'ronin/database/graph'
 
 require 'dm-core'
 

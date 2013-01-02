@@ -1,7 +1,7 @@
 #
-# Copyright (c) 2006-2021 Hal Brodigan (postmodern.mod3 at gmail.com)
+# Copyright (c) 2006-2012 Hal Brodigan (postmodern.mod3 at gmail.com)
 #
-# This file is part of ronin.
+# This file is part of Ronin.
 #
 # Ronin is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,8 +14,10 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
+# along with Ronin.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-require 'ronin/database/migrations/unknown_migration'
-require 'ronin/database/migrations/duplicate_migration'
+require 'ronin/database/migrations/migrations'
+require 'ronin/database/migrations/address'
+require 'ronin/database/migrations/host_name_ip_address'
+require 'ronin/database/migrations/ip_address_mac_address'
