@@ -20,8 +20,6 @@
 require 'ronin/model'
 require 'ronin/model/has_unique_name'
 
-require 'dm-is-predefined'
-
 module Ronin
   #
   # Represents a Computer Architecture and predefines many other common
@@ -32,8 +30,6 @@ module Ronin
 
     include Model
     include Model::HasUniqueName
-
-    is :predefined
 
     # Primary key
     property :id, Serial
@@ -71,66 +67,134 @@ module Ronin
       super(name,{:name => name}.merge(options))
     end
 
+    #
     # The x86 Architecture
-    predefine :x86, :endian => :little, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.x86
+      first(:name => 'x86')
+    end
 
-    # Alias to {x86}.
-    predefine :i386, :name => 'x86',
-                     :endian => :little,
-                     :address_length => 4
+    #
+    # @see x86
+    #
+    def self.i386; x86; end
 
-    # Alias to {x86}.
-    predefine :i486, :name => 'x86',
-                     :endian => :little,
-                     :address_length => 4
+    #
+    # @see x86
+    #
+    def self.i486; x86; end
 
-    # Alias to {x86}.
-    predefine :i686, :name => 'x86',
-                     :endian => :little,
-                     :address_length => 4
+    #
+    # @see x86
+    #
+    def self.i686; x86; end
 
-    # Alias to {x86}.
-    predefine :i986, :name => 'x86',
-                     :endian => :little,
-                     :address_length => 4
+    #
+    # @see x86
+    #
+    def self.i986; x86; end
 
+    #
     # The x86_64 Architecture
-    predefine :x86_64, :name => 'x86-64',
-                       :endian => :little,
-                       :address_length => 8
+    #
+    # @return [Arch]
+    #
+    def self.x86_64
+      first(:name => 'x86-64')
+    end
 
+    #
     # The ia64 Architecture
-    predefine :ia64, :endian => :little, :address_length => 8
+    #
+    # @return [Arch]
+    #
+    def self.ia64
+      first(:name => 'ia64')
+    end
 
+    #
     # The 32-bit PowerPC Architecture
-    predefine :ppc, :endian => :big, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.ppc
+      first(:name => 'ppc')
+    end
 
+    #
     # The 64-bit PowerPC Architecture
-    predefine :ppc64, :endian => :big, :address_length => 8
+    #
+    # @return [Arch]
+    #
+    def self.ppc64
+      first(:name => 'ppc64')
+    end
 
+    #
     # The 32-bit SPARC Architecture
-    predefine :sparc, :endian => :big, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.sparc
+      first(:name => 'sparc')
+    end
 
+    #
     # The 64-bit SPARC Architecture
-    predefine :sparc64, :endian => :big, :address_length => 8
+    #
+    # @return [Arch]
+    #
+    def self.sparc64
+      first(:name => 'sparc64')
+    end
 
+    #
     # The MIPS (little endian) Architecture
-    predefine :mips_le, :endian => :little, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.mips_le
+      first(:name => 'mips_le')
+    end
 
+    #
     # The MIPS (big endian) Architecture
-    predefine :mips_be, :endian => :big, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.mips_be
+      first(:name => 'mips_be')
+    end
 
-    # Alias to {mips_be}.
-    predefine :mips, :name => 'mips_be', :endian => :big, :address_length => 4
+    #
+    # @see mipse_be
+    #
+    def self.mips; mips_be; end
 
+    #
     # The ARM (little endian) Architecture
-    predefine :arm_le, :endian => :little, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.arm_le
+      first(:name => 'arm_le')
+    end
 
+    #
     # The ARM (big endian) Architecture
-    predefine :arm_be, :endian => :big, :address_length => 4
+    #
+    # @return [Arch]
+    #
+    def self.arm_be
+      first(:name => 'arm_be')
+    end
 
-    # Alias to {arm_be}.
-    predefine :arm, :name => 'arn_be', :endian => :big, :address_length => 4
+    #
+    # @see arm_be
+    #
+    def self.arm; arm_be; end
 
   end
 end

@@ -21,8 +21,6 @@ require 'ronin/model'
 require 'ronin/model/has_name'
 require 'ronin/extensions/meta'
 
-require 'dm-is-predefined'
-
 module Ronin
   #
   # Represents an Operating System and pre-defines other common ones
@@ -33,8 +31,6 @@ module Ronin
 
     include Model
     include Model::HasName
-
-    is :predefined
 
     # Primary key
     property :id, Serial
@@ -89,69 +85,116 @@ module Ronin
     end
 
     #
-    # Defines a new predefined OS.
+    # The Linux OS
     #
-    # @param [Symbol, String] name
-    #   The method name to define for the predefined OS.
+    # @param [String] version
+    #   Optional version of the OS.
     #
-    # @param [Hash{Symbol => Object}] attributes
-    #   Additional attributes for the OS.
+    # @return [OS]
     #
-    # @return [nil]
-    #
-    # @example
-    #   OS.predefine :freebsd, 'FreeBSD'
-    #
-    # @api private
-    #
-    def OS.predefine(name,attributes)
-      unless attributes[:name]
-        raise(ArgumentError,"must specify the :name attribute")
+    def self.linux(version=nil)
+      if version then first_or_create(:name => 'Linux', :version => version)
+      else            first(:name => 'Linux')
       end
-
-      super(name,attributes)
-
-      # if no version was predefined, allow the predefined helper-methods
-      # to accept a version argument
-      unless attributes[:version]
-        os_name = attributes[:name]
-
-        meta_def(name) do |*arguments|
-          attributes = predefined_attributes[name]
-          version = if arguments.first
-                      arguments.first.to_s
-                    end
-
-          OS.first_or_create(attributes.merge(:version => version))
-        end
-      end
-
-      return nil
     end
 
-    # The Linux OS
-    predefine :linux, :name => 'Linux'
-
+    #
     # The FreeBSD OS
-    predefine :freebsd, :name => 'FreeBSD'
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.freebsd(version=nil)
+      if version then first_or_create(:name => 'FreeBSD', :version => version)
+      else            first(:name => 'FreeBSD')
+      end
+    end
 
+    #
     # The OpenBSD OS
-    predefine :openbsd, :name => 'OpenBSD'
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.openbsd(version=nil)
+      if version then first_or_create(:name => 'OpenBSD', :version => version)
+      else            first(:name => 'OpenBSD')
+      end
+    end
 
+    #
     # The NetBSD OS
-    predefine :netbsd, :name => 'NetBSD'
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.netbsd(version=nil)
+      if version then first_or_create(:name => 'NetBSD', :version => version)
+      else            first(:name => 'NetBSD')
+      end
+    end
 
-    # OSX
-    predefine :osx, :name => 'OSX'
+    #
+    # OS X
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.osx(version=nil)
+      if version then first_or_create(:name => 'OS X', :version => version)
+      else            first(:name => 'OS X')
+      end
+    end
 
+    #
     # The Solaris OS
-    predefine :solaris, :name => 'Solaris'
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.solaris(version=nil)
+      if version then first_or_create(:name => 'Solaris', :version => version)
+      else            first(:name => 'Solaris')
+      end
+    end
 
-    # The Windows OS
-    predefine :windows, :name => 'Windows'
-
+    #
     # The family UNIX OSes
-    predefine :unix, :name => 'UNIX'
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.unix(version=nil)
+      if version then first_or_create(:name => 'UNIX', :version => version)
+      else            first(:name => 'UNIX')
+      end
+    end
+
+    #
+    # The Windows OS
+    #
+    # @param [String] version
+    #   Optional version of the OS.
+    #
+    # @return [OS]
+    #
+    def self.windows(version=nil)
+      if version then first_or_create(:name => 'Windows', :version => version)
+      else            first(:name => 'Windows')
+      end
+    end
 
   end
 end

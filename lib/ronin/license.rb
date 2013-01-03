@@ -20,8 +20,6 @@
 require 'ronin/model'
 require 'ronin/model/has_unique_name'
 
-require 'dm-is-predefined'
-
 module Ronin
   #
   # Represents a software license and pre-defines many other common ones
@@ -33,8 +31,6 @@ module Ronin
     include Model
     include Model::HasUniqueName
 
-    is :predefined
-
     # Primary key
     property :id, Serial
 
@@ -44,84 +40,121 @@ module Ronin
     # URL of the License document
     property :url, URI, :length => 256
 
+    #
     # Berkeley Software Distribution License
-    predefine :bsd,
-              :name => 'BSD',
-              :description => 'Berkeley Software Distribution License',
-              :url => 'http://www.opensource.org/licenses/bsd-license.php'
+    #
+    # @return [License]
+    #
+    def self.bsd
+      first(:name => 'BSD')
+    end
 
+    #
     # Creative Commons By-Attribution License
-    predefine :cc_by,
-              :name => 'CC by',
-              :description => 'Creative Commons Attribution v3.0 License',
-              :url => 'http://creativecommons.org/licenses/by/3.0/'
+    #
+    # @return [License]
+    #
+    def self.cc_by
+      first(:name => 'CC by')
+    end
 
+    #
     # Creative Commons By-Attribution Share-Alike License
-    predefine :cc_by_sa,
-              :name => 'CC by-sa',
-              :description => 'Creative Commons Attribution-Share Alike v3.0 License',
-              :url => 'http://creativecommons.org/licenses/by-sa/3.0/'
+    #
+    # @return [License]
+    #
+    def self.cc_by_sa
+      first(:name => 'CC by-sa')
+    end
 
+    #
     # Creative Commons By-Attribution No-Derivative Works License
-    predefine :cc_by_nd,
-              :name => 'CC by-nd',
-              :description => 'Creative Commons Attribution-No Derivative Works v3.0 License',
-              :url => 'http://creativecommons.org/licenses/by-nd/3.0/'
+    #
+    # @return [License]
+    #
+    def self.cc_by_nd
+      first(:name => 'CC by-nd')
+    end
 
+    #
     # Creative Commons By-Attribution Non-Commercial License
-    predefine :cc_by_nc,
-              :name => 'CC by-nc',
-              :description => 'Creative Commons Attribution-Noncommercial v3.0 License',
-              :url => 'http://creativecommons.org/licenses/by-nc/3.0/'
+    #
+    # @return [License]
+    #
+    def self.cc_by_nc
+      first(:name => 'CC by-nc')
+    end
 
+    #
     # Creative Commons By-Attribution Non-Commercial Share-Alike License
-    predefine :cc_by_nc_sa,
-              :name => 'CC by-nc-sa',
-              :description => 'Creative Commons Attribution-Noncommercial-Share Alike v3.0 License',
-              :url => 'http://creativecommons.org/licenses/by-nc-sa/3.0/'
+    #
+    def self.cc_by_nc_sa
+      first(:name => 'CC by-nc-sa')
+    end
 
+    #
     # Creative Commons By-Attribution Non-Commercial No-Derivative Works
     # License
-    predefine :cc_by_nc_nd,
-              :name => 'CC by-nc-nd',
-              :description => 'Creative Commons Attribution-Noncommercial-No Derivative Works v3.0 License',
-              :url => 'http://creativecommons.org/licenses/by-nc-nd/3.0/'
+    #
+    # @return [License]
+    #
+    def self.cc_by_nc_nd
+      first(:name => 'CC by-nc-nd')
+    end
 
+    #
     # Creative Commons Zero License
-    predefine :cc0,
-              :name => 'CC0',
-              :description => 'Creative Commons Zero License',
-              :url => 'http://creativecommons.org/licenses/zero/1.0/'
+    #
+    # @return [License]
+    #
+    def self.cc0
+      first(:name => 'CC0')
+    end
 
+    #
     # General Public License, version 2
-    predefine :gpl2,
-              :name => 'GPL-2',
-              :description => 'GNU Public License v2.0',
-              :url => 'https://www.gnu.org/licenses/gpl-2.0.txt'
+    #
+    # @return [License]
+    #
+    def self.gpl2
+      first(:name => 'GPL-2')
+    end
 
+    #
     # Lesser General Public License, version 2.1
-    predefine :lgpl2,
-              :name => 'LGPL-2.1',
-              :description => 'GNU Lesser General Public License v2.1',
-              :url => 'http://www.gnu.org/licenses/lgpl-2.1.txt'
+    #
+    # @return [License]
+    #
+    def self.lgpl2
+      first(:name => 'LGPL-2.1')
+    end
 
+    #
     # General Public License, version 3
-    predefine :gpl3,
-              :name => 'GPL-3',
-              :description => 'GNU Public License v3.0',
-              :url => 'https://www.gnu.org/licenses/gpl-3.0.txt'
+    #
+    # @return [License]
+    #
+    def self.gpl3
+      first(:name => 'GPL-3')
+    end
 
+    #
     # Lesser General Public License, version 3
-    predefine :lgpl3,
-              :name => 'LGPL-3',
-              :description => 'GNU Lesser General Public License v3.0',
-              :url => 'https://www.gnu.org/licenses/lgpl-3.0.txt'
+    #
+    # @return [License]
+    #
+    def self.lgpl3
+      first(:name => 'LGPL-3')
+    end
 
+    #
     # The MIT "as-is" License
-    predefine :mit,
-              :name => 'MIT',
-              :description => 'The MIT Licence',
-              :url => 'http://www.opensource.org/licenses/mit-license.php'
+    #
+    # @return [License]
+    #
+    def self.mit
+      first(:name => 'MIT')
+    end
 
   end
 end
