@@ -20,8 +20,6 @@
 require 'ronin/model'
 require 'ronin/model/has_unique_name'
 
-require 'dm-is-predefined'
-
 module Ronin
   #
   # Represents a {URL} scheme.
@@ -31,8 +29,6 @@ module Ronin
     include Model
     include Model::HasUniqueName
     
-    is :predefined
-
     # primary key of the URL Scheme
     property :id, Serial
 
@@ -40,14 +36,32 @@ module Ronin
     has 0..n, :urls, :model     => 'URL',
                      :child_key => [:scheme_id]
 
-    # Predefines the HTTP URL Scheme
-    predefine :http, :name => 'http'
+    #
+    # The HTTP URL Scheme
+    #
+    # @return [URLScheme]
+    #
+    def self.http
+      first(:name => 'http')
+    end
 
-    # Predefines the HTTPS URL Scheme
-    predefine :https, :name => 'https'
+    #
+    # The HTTPS URL Scheme
+    #
+    # @return [URLScheme]
+    #
+    def self.https
+      first(:name => 'https')
+    end
 
-    # Predefines the FTP URL Scheme
-    predefine :ftp, :name => 'ftp'
+    #
+    # The FTP URL Scheme
+    #
+    # @return [URLScheme]
+    #
+    def self.ftp
+      first(:name => 'ftp')
+    end
 
   end
 end
