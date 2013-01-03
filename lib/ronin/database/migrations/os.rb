@@ -54,7 +54,9 @@ module Ronin
             'UNIX',
             'windows'
           ].each do |name|
-            adapter.execute('INSERT INTO ronin_os (name) VALUES (?)', name)
+            adapter.execute(
+              'INSERT OR IGNORE INTO ronin_os (name) VALUES (?)', name
+            )
           end
         end
 
