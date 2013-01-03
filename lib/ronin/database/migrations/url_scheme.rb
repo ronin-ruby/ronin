@@ -37,6 +37,19 @@ module Ronin
           drop_table :ronin_url_schemes
         end
       end
+
+      migration :populate_url_schemes_table do
+        up do
+          %w[http https ftp].each do |name|
+            adapter.execute(
+              'INSERT OR IGNORE INTO ronin_url_schemes (name) VALUES (?)', name
+            )
+          end
+        end
+
+        down do
+        end
+      end
     end
   end
 end
