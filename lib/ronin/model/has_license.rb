@@ -81,7 +81,11 @@ module Ronin
                        when License
                          {:license => license}
                        when Symbol
-                         {:license => License.predefined_resource(license)}
+                         unless License.methods(false).include?(license)
+                           raise(ArgumentError,"unknown license: #{license}")
+                         end
+
+                         {:license => License.send(license)}
                        else
                          {'license.name' => license.to_s}
                        end
