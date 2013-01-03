@@ -41,6 +41,26 @@ module Ronin
           drop_table :ronin_os
         end
       end
+
+      migration :populate_os_table do
+        up do
+          [
+            'Linux',
+            'FreeBSD',
+            'OpenBSD',
+            'NetBSD',
+            'OS X',
+            'Solaris',
+            'UNIX',
+            'windows'
+          ].each do |name|
+            adapter.execute('INSERT INTO ronin_os (name) VALUES (?)', name)
+          end
+        end
+
+        down do
+        end
+      end
     end
   end
 end
