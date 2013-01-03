@@ -93,9 +93,7 @@ module Ronin
     # @return [OS]
     #
     def self.linux(version=nil)
-      if version then first_or_create(:name => 'Linux', :version => version)
-      else            first(:name => 'Linux')
-      end
+      first_or_create(:name => 'Linux', :version => version)
     end
 
     #
@@ -107,9 +105,7 @@ module Ronin
     # @return [OS]
     #
     def self.freebsd(version=nil)
-      if version then first_or_create(:name => 'FreeBSD', :version => version)
-      else            first(:name => 'FreeBSD')
-      end
+      first_or_create(:name => 'FreeBSD', :version => version)
     end
 
     #
@@ -121,9 +117,7 @@ module Ronin
     # @return [OS]
     #
     def self.openbsd(version=nil)
-      if version then first_or_create(:name => 'OpenBSD', :version => version)
-      else            first(:name => 'OpenBSD')
-      end
+      first_or_create(:name => 'OpenBSD', :version => version)
     end
 
     #
@@ -135,9 +129,7 @@ module Ronin
     # @return [OS]
     #
     def self.netbsd(version=nil)
-      if version then first_or_create(:name => 'NetBSD', :version => version)
-      else            first(:name => 'NetBSD')
-      end
+      first_or_create(:name => 'NetBSD', :version => version)
     end
 
     #
@@ -149,9 +141,7 @@ module Ronin
     # @return [OS]
     #
     def self.osx(version=nil)
-      if version then first_or_create(:name => 'OS X', :version => version)
-      else            first(:name => 'OS X')
-      end
+      first_or_create(:name => 'OS X', :version => version)
     end
 
     #
@@ -163,9 +153,7 @@ module Ronin
     # @return [OS]
     #
     def self.solaris(version=nil)
-      if version then first_or_create(:name => 'Solaris', :version => version)
-      else            first(:name => 'Solaris')
-      end
+      first_or_create(:name => 'Solaris', :version => version)
     end
 
     #
@@ -177,9 +165,7 @@ module Ronin
     # @return [OS]
     #
     def self.unix(version=nil)
-      if version then first_or_create(:name => 'UNIX', :version => version)
-      else            first(:name => 'UNIX')
-      end
+      first_or_create(:name => 'UNIX', :version => version)
     end
 
     #
@@ -191,9 +177,7 @@ module Ronin
     # @return [OS]
     #
     def self.windows(version=nil)
-      if version then first_or_create(:name => 'Windows', :version => version)
-      else            first(:name => 'Windows')
-      end
+      first_or_create(:name => 'Windows', :version => version)
     end
 
   end
