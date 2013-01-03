@@ -62,7 +62,7 @@ module Ronin
             ['arm_be', 'big', 4]
           ].each do |name,endian,address_length|
             adapter.execute(
-              'INSERT OR IGNORE into ronin_arches (name,endian,address_length) VALUES (?,?,?)',
+              'INSERT OR IGNORE INTO ronin_arches (name,endian,address_length) VALUES (?,?,?)',
               name, endian, address_length
             )
           end
