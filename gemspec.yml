@@ -67,7 +67,6 @@ dependencies:
   dm-timestamps: ~> 1.2
   dm-serializer: ~> 1.2
   # DataMapper plugins:
-  dm-is-predefined: ~> 0.4
   # Library dependencies:
   uri-query_params: ~> 0.6
   open_namespace: ~> 0.4
@@ -88,4 +87,3 @@ development_dependencies:
   bundler: ~> 2.0
   yard: ~> 0.8
   yard-dm: ~> 0.1
-  yard-dm-is-predefined: ~> 0.2

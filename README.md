@@ -159,7 +159,6 @@ Remove a Database:
   * [dm-aggregates] ~> 1.2
   * [dm-timestamps] ~> 1.2
   * [dm-serializer] ~> 1.2
-* [dm-is-predefined] ~> 0.4
 * [uri-query_params] ~> 0.6
 * [open_namespace] ~> 0.4
 * [data_paths] ~> 0.3
@@ -233,7 +232,6 @@ along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 [dm-aggregates]: https://github.com/datamapper/dm-aggregates#readme
 [dm-timestamps]: https://github.com/datamapper/dm-timestamps#readme
 [dm-serializer]: https://github.com/datamapper/dm-serializer#readme
-[dm-is-predefined]: https://github.com/postmodern/dm-is-predefined#readme
 [uri-query_params]: https://github.com/postmodern/uri-query_params#readme
 [open_namespace]: https://github.com/postmodern/open_namespace#readme
 [data_paths]: https://github.com/postmodern/data_paths#readme
