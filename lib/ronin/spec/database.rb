@@ -42,9 +42,6 @@ RSpec.configure do |spec|
   spec.before(:suite) do
     # setup the database
     Ronin::Database.setup(uri)
-
-    # auto-migrate any models defined in the specs
-    DataMapper.auto_upgrade!
   end
 
   spec.after(:suite) do
