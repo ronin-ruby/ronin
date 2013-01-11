@@ -296,7 +296,7 @@ module Ronin
 
       remote_repo = Pullr::RemoteRepository.new(options)
 
-      name   = remote_repo.name
+      name   = remote_repo.name.sub(/^ronin-/,'')
       domain = if remote_repo.uri.scheme
                  remote_repo.uri.host
                else
