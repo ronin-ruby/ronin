@@ -247,26 +247,6 @@ module Ronin
     end
 
     #
-    # @deprecated
-    #   Deprecated as of 1.4.0 and will be removed in 2.0.0.
-    #
-    # @see with_query_param
-    #
-    def self.query_param(name)
-      with_query_param(name)
-    end
-
-    #
-    # @deprecated
-    #   Deprecated as of 1.4.0 and will be removed in 2.0.0.
-    #
-    # @see with_query_value
-    #
-    def self.query_value(value)
-      with_query_value(name)
-    end
-
-    #
     # Searches for a URL.
     #
     # @param [URI::HTTP, String] url

@@ -118,15 +118,6 @@ module Ronin
         def licensed_under(name)
           self.license = Ronin::License.predefined_resource(name)
         end
-
-        #
-        # @deprecated `license!` was deprecated in favor of {#licensed_under}.
-        #
-        # @since 1.0.0
-        #
-        def license!(name)
-          licensed_under(name)
-        end
       end
     end
   end
