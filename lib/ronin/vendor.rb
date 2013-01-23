@@ -33,7 +33,7 @@ module Ronin
     property :id, Serial
 
     # Products published by the vendor
-    has 0..n, :software, :model => 'Software'
+    has 0..n, :software, model: 'Software'
 
   end
 end

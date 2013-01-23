@@ -26,16 +26,17 @@ module Ronin
       #
       # 1.0.0
       #
-      migration :create_ports_table, :needs => :create_organizations_table do
+      migration :create_ports_table, needs: :create_organizations_table do
         up do
           create_table :ronin_ports do
-            column :id, Integer, :serial => true
-            column :protocol, String, :not_null => true
-            column :number, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :protocol, String, not_null: true
+            column :number, Integer, not_null: true
             column :organization_id, Integer
           end
 
-          create_index :ronin_ports, :protocol, :number, :name => :protocol_number, :unique => true
+          create_index :ronin_ports, :protocol, :number, name: :protocol_number,
+                                                         unique: true
         end
 
         down do

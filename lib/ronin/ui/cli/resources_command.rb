@@ -30,17 +30,17 @@ module Ronin
       #
       class ResourcesCommand < ModelCommand
 
-        option :csv, :type => true,
-                     :description => 'CSV output'
+        option :csv, type:        true,
+                     description: 'CSV output'
 
-        option :xml, :type => true,
-                     :description => 'XML output'
+        option :xml, type:        true,
+                     description: 'XML output'
 
-        option :yaml, :type => true,
-                      :description => 'YAML output'
+        option :yaml, type:        true,
+                      description: 'YAML output'
 
-        option :json, :type => true,
-                      :description => 'JSON output'
+        option :json, type:        true,
+                      description: 'JSON output'
 
         #
         # Default method performs the query and prints the found resources.
@@ -70,10 +70,10 @@ module Ronin
         #
         def self.model(model=nil)
           if (model && model < Model::Importable)
-            option :import, :type  => String,
-                            :flag  => '-i',
-                            :usage => 'FILE',
-                            :description => 'The file to import'
+            option :import, type:        String,
+                            flag:        '-i',
+                            usage:       'FILE',
+                            description: 'The file to import'
           end
 
           return super(model)

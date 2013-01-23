@@ -36,32 +36,32 @@ module Ronin
     include Model::Importable
 
     # The address of the host name
-    property :address, String, :length => 256,
-                               :required => true,
-                               :unique => true,
-                               :format => /^#{Regexp::HOST_NAME}$/,
-                               :messages => {
-                                 :format => 'Must be a valid host-name'
+    property :address, String, length:   256,
+                               required: true,
+                               unique:   true,
+                               format:   /^#{Regexp::HOST_NAME}$/,
+                               messages: {
+                                 format: 'Must be a valid host-name'
                                }
 
     # The IP Address associations
-    has 0..n, :host_name_ip_addresses, :model => 'HostNameIPAddress'
+    has 0..n, :host_name_ip_addresses, model: 'HostNameIPAddress'
 
     # The IP Addresses that host the host name
-    has 0..n, :ip_addresses, :through => :host_name_ip_addresses,
-                             :model => 'IPAddress'
+    has 0..n, :ip_addresses, through: :host_name_ip_addresses,
+                             model:   'IPAddress'
 
     # Open ports of the host
-    has 0..n, :open_ports, :through => :ip_addresses
+    has 0..n, :open_ports, through: :ip_addresses
 
     # Ports of the host
-    has 0..n, :ports, :through => :ip_addresses
+    has 0..n, :ports, through: :ip_addresses
 
     # The email addresses that are associated with the host-name.
     has 0..n, :email_addresses
 
     # URLs that point to this host name
-    has 0..n, :urls, :model => 'URL'
+    has 0..n, :urls, model: 'URL'
 
     #
     # Extracts host-names from the given text.
@@ -181,7 +181,7 @@ module Ronin
     #
     def self.lookup(addr,nameserver=nil)
       addr = addr.to_s
-      ip = IPAddress.first_or_new(:address => addr)
+      ip = IPAddress.first_or_new(address: addr)
 
       resolver = Resolv.resolver(nameserver)
       hosts = begin
@@ -191,10 +191,7 @@ module Ronin
               end
 
       hosts.map! do |name|
-        HostName.first_or_create(
-          :address => name,
-          :ip_addresses => [ip]
-        )
+        HostName.first_or_create(address: name, ip_addresses: [ip])
       end
 
       return hosts
@@ -224,10 +221,7 @@ module Ronin
             end
 
       ips.map! do |addr|
-        IPAddress.first_or_create(
-          :address => addr,
-          :host_names => [self]
-        )
+        IPAddress.first_or_create(address: addr, host_names: [self])
       end
 
       return ips
@@ -245,7 +239,7 @@ module Ronin
     #
     def recent_ip_address
       self.host_name_ip_addresses.all(
-        :order => [:created_at.desc]
+        order: [:created_at.desc]
       ).ip_addresses.first
     end
 
@@ -260,9 +254,7 @@ module Ronin
     # @api public
     #
     def last_scanned_at
-      last_scanned_url = self.urls.first(
-        :order => [:last_scanned_at.desc]
-      )
+      last_scanned_url = self.urls.first(order: [:last_scanned_at.desc])
 
       return last_scanned_url.last_scanned_at if last_scanned_url
     end

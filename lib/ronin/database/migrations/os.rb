@@ -28,8 +28,8 @@ module Ronin
       migration :create_os_table do
         up do
           create_table :ronin_os do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
             column :version, String
           end
 

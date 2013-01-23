@@ -28,7 +28,7 @@ module Ronin
       migration :create_authors_table do
         up do
           create_table :ronin_authors do
-            column :id, Integer, :serial => true
+            column :id, Integer, serial: true
             column :name, String
             column :organization, String
             column :pgp_signature, String

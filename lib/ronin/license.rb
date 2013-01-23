@@ -35,10 +35,10 @@ module Ronin
     property :id, Serial
 
     # Description of license
-    property :description, Text, :required => true
+    property :description, Text, required: true
 
     # URL of the License document
-    property :url, URI, :length => 256
+    property :url, URI, length: 256
 
     #
     # Berkeley Software Distribution License
@@ -46,7 +46,7 @@ module Ronin
     # @return [License]
     #
     def self.bsd
-      first(:name => 'BSD')
+      first(name: 'BSD')
     end
 
     #
@@ -55,7 +55,7 @@ module Ronin
     # @return [License]
     #
     def self.cc_by
-      first(:name => 'CC by')
+      first(name: 'CC by')
     end
 
     #
@@ -64,7 +64,7 @@ module Ronin
     # @return [License]
     #
     def self.cc_by_sa
-      first(:name => 'CC by-sa')
+      first(name: 'CC by-sa')
     end
 
     #
@@ -73,7 +73,7 @@ module Ronin
     # @return [License]
     #
     def self.cc_by_nd
-      first(:name => 'CC by-nd')
+      first(name: 'CC by-nd')
     end
 
     #
@@ -82,14 +82,14 @@ module Ronin
     # @return [License]
     #
     def self.cc_by_nc
-      first(:name => 'CC by-nc')
+      first(name: 'CC by-nc')
     end
 
     #
     # Creative Commons By-Attribution Non-Commercial Share-Alike License
     #
     def self.cc_by_nc_sa
-      first(:name => 'CC by-nc-sa')
+      first(name: 'CC by-nc-sa')
     end
 
     #
@@ -99,7 +99,7 @@ module Ronin
     # @return [License]
     #
     def self.cc_by_nc_nd
-      first(:name => 'CC by-nc-nd')
+      first(name: 'CC by-nc-nd')
     end
 
     #
@@ -108,7 +108,7 @@ module Ronin
     # @return [License]
     #
     def self.cc0
-      first(:name => 'CC0')
+      first(name: 'CC0')
     end
 
     #
@@ -117,7 +117,7 @@ module Ronin
     # @return [License]
     #
     def self.gpl2
-      first(:name => 'GPL-2')
+      first(name: 'GPL-2')
     end
 
     #
@@ -126,7 +126,7 @@ module Ronin
     # @return [License]
     #
     def self.lgpl2
-      first(:name => 'LGPL-2.1')
+      first(name: 'LGPL-2.1')
     end
 
     #
@@ -135,7 +135,7 @@ module Ronin
     # @return [License]
     #
     def self.gpl3
-      first(:name => 'GPL-3')
+      first(name: 'GPL-3')
     end
 
     #
@@ -144,7 +144,7 @@ module Ronin
     # @return [License]
     #
     def self.lgpl3
-      first(:name => 'LGPL-3')
+      first(name: 'LGPL-3')
     end
 
     #
@@ -153,7 +153,7 @@ module Ronin
     # @return [License]
     #
     def self.mit
-      first(:name => 'MIT')
+      first(name: 'MIT')
     end
 
   end

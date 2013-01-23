@@ -27,19 +27,19 @@ module Ronin
       # 1.0.0
       #
       migration :create_host_name_ip_addresses_table,
-                :needs => :create_addresses_table do
+                needs: :create_addresses_table do
         up do
           create_table :ronin_host_name_ip_addresses do
             column :id, Serial
-            column :host_name_id, Integer, :not_null => true
-            column :ip_address_id, Integer, :not_null => true
-            column :created_at, Time, :not_null => true
+            column :host_name_id, Integer, not_null: true
+            column :ip_address_id, Integer, not_null: true
+            column :created_at, Time, not_null: true
           end
 
           create_index :ronin_host_name_ip_addresses,
                        :host_name_id, :ip_address_id,
-                       :name => :unique_index_ronin_host_name_ip_addresses,
-                       :unique => true
+                       name:   :unique_index_ronin_host_name_ip_addresses,
+                       unique: true
         end
 
         down do

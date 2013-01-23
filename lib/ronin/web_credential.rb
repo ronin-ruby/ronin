@@ -26,8 +26,8 @@ module Ronin
   class WebCredential < Credential
 
     # The URL the credential can be used with.
-    belongs_to :url, :required => false,
-                     :model => 'URL'
+    belongs_to :url, required: false,
+                     model:    'URL'
 
     #
     # Searches all web credentials that are associated with an
@@ -51,7 +51,7 @@ module Ronin
       user, domain = email.split('@',2)
 
       return all(
-        'email_address.user_name.name' => user,
+        'email_address.user_name.name'    => user,
         'email_address.host_name.address' => domain
       )
     end

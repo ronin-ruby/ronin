@@ -36,7 +36,7 @@ module Ronin
     belongs_to :host_name
 
     # The IP Address
-    belongs_to :ip_address, :model => 'IPAddress'
+    belongs_to :ip_address, model: 'IPAddress'
 
     # Tracks when a IP Address is associated with a host name
     timestamps :created_at

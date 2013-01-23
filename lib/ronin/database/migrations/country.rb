@@ -28,13 +28,13 @@ module Ronin
       migration :create_countries_table do
         up do
           create_table :ronin_countries do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
-            column :code, String, :length => 2, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
+            column :code, String, length: 2, not_null: true
           end
 
-          create_index :ronin_countries, :name, :unique => true
-          create_index :ronin_countries, :code, :unique => true
+          create_index :ronin_countries, :name, unique: true
+          create_index :ronin_countries, :code, unique: true
         end
 
         down do

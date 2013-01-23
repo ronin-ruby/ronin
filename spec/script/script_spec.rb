@@ -57,13 +57,13 @@ describe Script do
 
   describe "#initialize" do
     it "should initialize attributes" do
-      resource = subject.new(:name => 'test')
+      resource = subject.new(name: 'test')
 
       expect(resource.name).to eq('test')
     end
 
     it "should initialize parameters" do
-      resource = subject.new(:x => 5)
+      resource = subject.new(x: 5)
 
       expect(resource.x).to eq(5)
     end
@@ -106,7 +106,7 @@ describe Script do
   end
 
   context "when previously cached" do
-    subject { MyScript.first(:name => 'test') }
+    subject { MyScript.first(name: 'test') }
 
     it "should have a cached_file resource" do
       expect(subject.script_path).not_to be_nil

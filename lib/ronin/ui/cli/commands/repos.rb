@@ -53,31 +53,31 @@ module Ronin
 
           model Repository
 
-          query_option :domain, :type        => String,
-                                :description => 'Domain to filter by'
+          query_option :domain, type:        String,
+                                description: 'Domain to filter by'
 
-          query_option :named, :type        => String,
-                               :flag        => '-n',
-                               :usage       => 'NAME',
-                               :description => 'Name to filter by'
+          query_option :named, type:        String,
+                               flag:        '-n',
+                               usage:       'NAME',
+                               description: 'Name to filter by'
 
-          query_option :titled, :type        => String,
-                                :flag        => '-t',
-                                :usage       => 'TITLE',
-                                :description => 'Title to filter by'
+          query_option :titled, type:        String,
+                                flag:        '-t',
+                                usage:       'TITLE',
+                                description: 'Title to filter by'
 
-          query_option :describing, :type        => String,
-                                    :flag        => '-d',
-                                    :usage       => 'DESC',
-                                    :description => 'Description to filter by'
+          query_option :describing, type:        String,
+                                    flag:        '-d',
+                                    usage:       'DESC',
+                                    description: 'Description to filter by'
 
-          query_option :licensed_under, :type        => String,
-                                        :flag        => '-L',
-                                        :usage       => 'LICENSE',
-                                        :description => 'License to filter by'
+          query_option :licensed_under, type:        String,
+                                        flag:        '-L',
+                                        usage:       'LICENSE',
+                                        description: 'License to filter by'
 
-          argument :repo, :type        => String,
-                          :description => 'Repository to list'
+          argument :repo, type:        String,
+                          description: 'Repository to list'
 
           #
           # Executes the command.

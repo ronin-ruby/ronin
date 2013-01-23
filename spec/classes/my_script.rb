@@ -6,9 +6,9 @@ class MyScript
 
   property :id, Serial
 
-  property :content, String, :required => true
+  property :content, String, required: true
 
-  parameter :x, :default => 1
+  parameter :x, default: 1
 
   attr_accessor :var
 

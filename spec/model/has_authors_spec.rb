@@ -37,7 +37,7 @@ describe Model::HasAuthors do
   describe "#author" do
     subject do
       model.new.tap do |resource|
-        resource.author(:name => author_name, :email => author_email)
+        resource.author(name: author_name, email: author_email)
       end
     end
 
@@ -54,9 +54,9 @@ describe Model::HasAuthors do
     before do
       resource = subject.new(:content => 'Test')
       resource.author(
-        :name => author_name,
-        :email => author_email,
-        :organization => organization
+        name: author_name,
+        email: author_email,
+        organization: organization
       )
 
       resource.save

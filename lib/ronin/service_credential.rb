@@ -25,7 +25,7 @@ module Ronin
   #
   class ServiceCredential < Credential
 
-    belongs_to :open_port, :required => false
+    belongs_to :open_port, required: false
 
   end
 end

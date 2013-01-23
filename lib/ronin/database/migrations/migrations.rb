@@ -60,11 +60,11 @@ module Ronin
       #   position.
       #
       # @example Defining a migration at a position
-      #   migration(1, :create_people_table) do
+      #   migration 1, :create_people_table do
       #     up do
       #       create_table :people do
-      #         column :id,   Integer, :serial => true
-      #         column :name, String, :size => 50
+      #         column :id,   Integer, serial: true
+      #         column :name, String, size: 50
       #         column :age,  Integer
       #       end
       #     end
@@ -75,11 +75,11 @@ module Ronin
       #   end
       #
       # @example Defining a migration with a name
-      #   migration(:create_people_table) do
+      #   migration :create_people_table do
       #     up do
       #       create_table :people do
-      #         column :id,   Integer, :serial => true
-      #         column :name, String, :size => 50
+      #         column :id,   Integer, serial: true
+      #         column :name, String, size: 50
       #         column :age,  Integer
       #       end
       #     end
@@ -90,7 +90,7 @@ module Ronin
       #   end
       #
       # @example Defining a migration with dependencies
-      #   migration(:add_salary_column, :needs => :create_people_table) do
+      #   migration :add_salary_column, needs: :create_people_table do
       #     up do
       #       modify_table :people do
       #         add_column :salary, Integer

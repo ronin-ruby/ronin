@@ -51,8 +51,8 @@ module Ronin
 
           summary 'Updates Ronin Repositories'
 
-          argument :repo, :type        => String,
-                          :description => 'Repository to update'
+          argument :repo, type:        String,
+                          description: 'Repository to update'
 
           examples [
             "ronin update repo",

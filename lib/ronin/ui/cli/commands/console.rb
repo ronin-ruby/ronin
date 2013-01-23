@@ -48,22 +48,22 @@ module Ronin
 
           summary 'Start the Ronin Console'
 
-          option :database, :type        => URI,
-                            :flag        => '-D',
-                            :description => 'The database to URI'
+          option :database, type:        URI,
+                            flag:        '-D',
+                            description: 'The database to URI'
 
-          option :require, :type        => Array,
-                           :default     => [],
-                           :flag        => '-r',
-                           :usage       => 'PATH',
-                           :description => 'Ruby files to require'
+          option :require, type:        Array,
+                           default:     [],
+                           flag:        '-r',
+                           usage:       'PATH',
+                           description: 'Ruby files to require'
 
-          option :backtrace, :type        => true,
-                             :description => 'Enable long backtraces'
+          option :backtrace, type:        true,
+                             description: 'Enable long backtraces'
 
-          option :version, :type        => true,
-                           :flag        => '-V',
-                           :description => 'Print the Ronin version'
+          option :version, type:        true,
+                           flag:        '-V',
+                           description: 'Print the Ronin version'
 
           #
           # Sets up the Ronin Console.

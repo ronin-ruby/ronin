@@ -76,22 +76,23 @@ module Ronin
     property :scm, String
 
     # Local path to the repository
-    property :path, FilePath, :required => true, :unique => true
+    property :path, FilePath, required: true,
+                              unique:   true
 
     # URI that the repository was installed from
     property :uri, URI
 
     # Specifies whether the repository was installed remotely
     # or added using a local directory.
-    property :installed, Boolean, :default => false
+    property :installed, Boolean, default: false
 
     # Name of the repository
-    property :name, String, :default => proc { |repo,name|
+    property :name, String, default: proc { |repo,name|
       repo.path.basename
     }
 
     # The domain the repository belongs to
-    property :domain, String, :required => true
+    property :domain, String, required: true
 
     # Title of the repository
     property :title, Text
@@ -106,7 +107,7 @@ module Ronin
     property :description, Text
 
     # The script paths from the repository
-    has 0..n, :script_paths, :model => 'Script::Path'
+    has 0..n, :script_paths, model: 'Script::Path'
 
     # The `bin/` directory
     attr_reader :bin_dir
@@ -189,7 +190,7 @@ module Ronin
     def Repository.find(name)
       name, domain = name.to_s.split('@',2)
 
-      query = {:name => name}
+      query = {name: name}
       query[:domain] = domain if domain
 
       unless (repo = Repository.first(query))
@@ -233,18 +234,18 @@ module Ronin
         raise(RepositoryNotFound,"Repository #{path} cannot be found")
       end
 
-      if Repository.count(:path => path) > 0
+      if Repository.count(path: path) > 0
         raise(DuplicateRepository,"a Repository at the path #{path} was already added")
       end
 
       # create the repository
       repo = Repository.new(options.merge(
-        :path      => path,
-        :installed => false,
-        :domain    => LOCAL_DOMAIN
+        path:      path,
+        installed: false,
+        domain:    LOCAL_DOMAIN
       ))
 
-      if Repository.count(:name => repo.name, :domain => repo.domain) > 0
+      if Repository.count(name: repo.name, domain: repo.domain) > 0
         raise(DuplicateRepository,"the Repository #{repo} already exists in the database")
       end
 
@@ -305,7 +306,7 @@ module Ronin
                  remote_repo.uri.to_s.match(/\@([^@:\/]+)/)[1]
                end
 
-      if Repository.count(:name => name, :domain => domain) > 0
+      if Repository.count(name: name, domain: domain) > 0
         raise(DuplicateRepository,"a Repository already exists with the name #{name.dump} from domain #{domain.dump}")
       end
 
@@ -316,12 +317,12 @@ module Ronin
 
       # add the new remote repository
       repo = Repository.new(
-        :path      => path,
-        :scm       => local_repo.scm,
-        :uri       => remote_repo.uri,
-        :installed => true,
-        :name      => name,
-        :domain    => domain
+        path:      path,
+        scm:       local_repo.scm,
+        uri:       remote_repo.uri,
+        installed: true,
+        name:      name,
+        domain:    domain
       )
 
       # save the repository 
@@ -550,7 +551,7 @@ module Ronin
     def find_script(sub_path)
       paths = @script_dirs.map { |dir| File.join(dir,sub_path) }
 
-      return script_paths.first(:path => paths)
+      return script_paths.first(path: paths)
     end
 
     #
@@ -568,7 +569,7 @@ module Ronin
       clean_scripts!
 
       each_script do |path|
-        self.script_paths.new(:path => path).cache
+        self.script_paths.new(path: path).cache
       end
 
       return self
@@ -601,7 +602,7 @@ module Ronin
 
       # cache the new paths within the `cache/` directory
       new_paths.each do |path|
-        self.script_paths.new(:path => path).cache
+        self.script_paths.new(path: path).cache
       end
 
       # deactivates the repository
@@ -644,10 +645,7 @@ module Ronin
     # @api private
     #
     def update!
-      local_repo = Pullr::LocalRepository.new(
-        :path => self.path,
-        :scm  => self.scm
-      )
+      local_repo = Pullr::LocalRepository.new(path: self.path, scm: self.scm)
 
       # only update if we have a repository
       local_repo.update(self.uri)
@@ -737,7 +735,7 @@ module Ronin
         end
 
         if (license = metadata['license'])
-          self.license = License.first(:name => license)
+          self.license = License.first(name: license)
         end
 
         if (uri = metadata['uri'])
@@ -755,11 +753,11 @@ module Ronin
         case metadata['authors']
         when Hash
           metadata['authors'].each do |name,email|
-            self.authors << Author.first_or_new(:name => name, :email => email)
+            self.authors << Author.first_or_new(name: name, email: email)
           end
         when Array
           metadata['authors'].each do |name|
-            self.authors << Author.first_or_new(:name => name)
+            self.authors << Author.first_or_new(name: name)
           end
         end
       end

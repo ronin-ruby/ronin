@@ -28,24 +28,24 @@ module Ronin
       # 1.0.0
       #
       migration :create_open_ports_table,
-                :needs => [
+                needs: [
                   :create_addresses_table,
                   :create_ports_table,
                 ] do
         up do
           create_table :ronin_open_ports do
-            column :id, Integer, :serial => true
-            column :ip_address_id, Integer, :not_null => true
-            column :port_id, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :ip_address_id, Integer, not_null: true
+            column :port_id, Integer, not_null: true
             column :service_id, Integer
             column :last_scanned_at, Time
-            column :created_at, Time, :not_null => true
+            column :created_at, Time, not_null: true
           end
 
           create_index :ronin_open_ports,
                        :ip_address_id, :port_id, :service_id,
-                       :name => :unique_index_ronin_open_ports,
-                       :unique => true
+                       name:   :unique_index_ronin_open_ports,
+                       unique: true
         end
 
         down do
@@ -57,7 +57,7 @@ module Ronin
       # 1.6.0
       #
       migration :add_software_id_to_open_ports_table,
-                :needs => :create_open_ports_table do
+                needs: :create_open_ports_table do
         up do
           modify_table :ronin_open_ports do
             add_column :software_id, Integer
@@ -69,7 +69,7 @@ module Ronin
       end
 
       migration :add_ssl_to_open_ports_table,
-                :needs => :create_open_ports_table do
+                needs: :create_open_ports_table do
         up do
           modify_table :ronin_open_ports do
             add_column :ssl, Boolean

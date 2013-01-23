@@ -34,7 +34,7 @@ describe Model::HasLicense do
     subject { model }
 
     it "should not require a license" do
-      resource = subject.new(:content => 'bla')
+      resource = subject.new(content: 'bla')
 
       expect(resource).to be_valid
     end
@@ -45,8 +45,8 @@ describe Model::HasLicense do
 
     before do
       subject.create(
-        :content => 'stuff here',
-        :license => License.gpl2
+        content: 'stuff here',
+        license: License.gpl2
       )
     end
 

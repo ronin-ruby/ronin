@@ -4,7 +4,7 @@ require 'ronin/author'
 
 describe Author do
   describe "#to_s" do
-    subject { described_class.new(:name => 'anonymous') }
+    subject { described_class.new(name: 'anonymous') }
 
     it "should return the name when their is no email" do
       expect(subject.to_s).to eq('anonymous')
@@ -13,8 +13,8 @@ describe Author do
     context "when email is set" do
       subject do
         described_class.new(
-          :name  => 'anonymous',
-          :email => 'anonymous@example.com'
+          name:  'anonymous',
+          email: 'anonymous@example.com'
         )
       end
 

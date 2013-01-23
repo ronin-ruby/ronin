@@ -39,7 +39,7 @@ module Ronin
 
         base.module_eval do
           # The version of the model
-          property :version, String, :default => '0.1', :index => true
+          property :version, String, default: '0.1', index: true
         end
       end
 
@@ -60,7 +60,7 @@ module Ronin
         # @api public
         #
         def revision(version)
-          all(:version => version.to_s)
+          all(version: version.to_s)
         end
 
         #
@@ -69,7 +69,7 @@ module Ronin
         # @api public
         #
         def latest
-          first(:order => [:version.desc])
+          first(order: [:version.desc])
         end
       end
     end

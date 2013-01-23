@@ -82,13 +82,13 @@ module Ronin
         property :type, DataMapper::Property::Discriminator
 
         # The cached file of the object
-        belongs_to :script_path, Ronin::Script::Path, :required => false
+        belongs_to :script_path, Ronin::Script::Path, required: false
 
         # Validations
-        validates_uniqueness_of :version, :scope => [:name]
+        validates_uniqueness_of :version, scope: [:name]
       end
 
-      Path.has 1, base.relationship_name, base, :child_key => [:script_path_id]
+      Path.has 1, base.relationship_name, base, child_key: [:script_path_id]
     end
 
     #
@@ -362,9 +362,9 @@ module Ronin
 
       script.instance_variable_set('@script_loaded',true)
       script.script_path = Path.new(
-        :path => path,
-        :timestamp => File.mtime(path),
-        :class_name => script.class.to_s
+        path:       path,
+        timestamp:  File.mtime(path),
+        class_name: script.class.to_s
       )
 
       return script

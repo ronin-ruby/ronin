@@ -31,20 +31,20 @@ module Ronin
     property :id, Serial
 
     # The protocol of the port (either `'tcp'` / `'udp'`)
-    property :protocol, String, :set => ['tcp', 'udp'],
-                                :required => true,
-                                :unique_index => :protocol_port
+    property :protocol, String, set:          ['tcp', 'udp'],
+                                required:     true,
+                                unique_index: :protocol_port
 
     # The port number
-    property :number, Integer, :required => true,
-                               :min => 1,
-                               :max => 65535,
-                               :unique_index => :protocol_port
+    property :number, Integer, required:     true,
+                               min:          1,
+                               max:          65535,
+                               unique_index: :protocol_port
 
     # The open ports
     has 1..n, :open_ports
 
-    validates_uniqueness_of :number, :scope => [:protocol]
+    validates_uniqueness_of :number, scope: [:protocol]
 
     #
     # Creates a new Port.
@@ -60,7 +60,7 @@ module Ronin
     # @api public
     #
     def self.from(number)
-      first_or_new(:number => number)
+      first_or_new(number: number)
     end
 
     #

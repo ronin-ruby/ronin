@@ -7,7 +7,7 @@ describe URLQueryParam do
   let(:value) { 'bar' }
 
   subject do
-    described_class.new(:name => {:name => name}, :value => value)
+    described_class.new(name: {name: name}, value: value)
   end
 
   describe "#to_s" do
@@ -17,7 +17,7 @@ describe URLQueryParam do
 
     context "with empty or nil values" do
       subject do
-        described_class.new(:name => {:name => name})
+        described_class.new(name: {name: name})
       end
 
       it "should ignore empty or nil values" do
@@ -30,7 +30,7 @@ describe URLQueryParam do
       let(:encoded_value) { URI::DEFAULT_PARSER.escape(value) }
 
       subject do
-        described_class.new(:name => {:name => name}, :value => value)
+        described_class.new(name: {name: name}, value: value)
       end
 
       it "should escape special characters" do

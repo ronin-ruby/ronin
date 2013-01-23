@@ -43,10 +43,10 @@ module Ronin
     timestamps :created_at
 
     # The organization that is being targeted
-    has 1, :organization, :through => :address
+    has 1, :organization, through: :address
 
     # Validates the uniqueness of the address and the campaign.
-    validates_uniqueness_of :address, :scope => [:campaign]
+    validates_uniqueness_of :address, scope: [:campaign]
 
     #
     # Converts the target to a String.

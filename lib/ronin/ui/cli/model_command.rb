@@ -28,9 +28,9 @@ module Ronin
       #
       class ModelCommand < Command
 
-        option :database, :type => URI,
-                          :flag => '-D',
-                          :description => 'The Database URI'
+        option :database, type:        URI,
+                          flag:        '-D',
+                          description: 'The Database URI'
 
         #
         # The query options for the command.

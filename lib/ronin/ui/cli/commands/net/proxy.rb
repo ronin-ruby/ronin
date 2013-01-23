@@ -75,86 +75,86 @@ module Ronin
 
             summary 'Starts a TCP/UDP intercept proxy'
 
-            option :tcp, :type        => true,
-                         :default     => true,
-                         :flag        => '-t',
-                         :description => 'TCP Proxy'
+            option :tcp, type:        true,
+                         default:     true,
+                         flag:        '-t',
+                         description: 'TCP Proxy'
 
-            option :udp, :type        => true,
-                         :flag        => '-u',
-                         :description => 'UDP Proxy'
+            option :udp, type:        true,
+                         flag:        '-u',
+                         description: 'UDP Proxy'
 
-            option :hexdump, :type        => true,
-                             :flag        => '-x',
-                             :description => 'Enable hexdump output'
+            option :hexdump, type:        true,
+                             flag:        '-x',
+                             description: 'Enable hexdump output'
 
-            option :host, :type        => String,
-                          :default     => Network::Proxy::DEFAULT_HOST,
-                          :flag        => '-H',
-                          :usage       => 'HOST',
-                          :description => 'Host to listen on'
+            option :host, type:        String,
+                          default:     Network::Proxy::DEFAULT_HOST,
+                          flag:        '-H',
+                          usage:       'HOST',
+                          description: 'Host to listen on'
 
-            option :port, :type        => Integer,
-                          :flag        => '-p',
-                          :usage       => 'PORT',
-                          :description => 'Port to listen on'
+            option :port, type:        Integer,
+                          flag:        '-p',
+                          usage:       'PORT',
+                          description: 'Port to listen on'
 
-            option :server, :type        => String,
-                            :flag        => '-s',
-                            :usage       => 'HOST[:PORT]',
-                            :description => 'Server to forward connections to'
+            option :server, type:        String,
+                            flag:        '-s',
+                            usage:       'HOST[:PORT]',
+                            description: 'Server to forward connections to'
 
-            option :rewrite, :type        => Hash[Regexp => String],
-                             :flag        => '-r',
-                             :usage       => '/REGEXP/:STRING',
-                             :description => 'Rewrite rules'
+            option :rewrite, type:        Hash[Regexp => String],
+                             flag:        '-r',
+                             usage:       '/REGEXP/:STRING',
+                             description: 'Rewrite rules'
 
-            option :rewrite_client, :type        => Hash[Regexp => String],
-                                    :usage       => '/REGEXP/:STRING',
-                                    :description => 'Client rewrite rules'
+            option :rewrite_client, type:        Hash[Regexp => String],
+                                    usage:       '/REGEXP/:STRING',
+                                    description: 'Client rewrite rules'
 
-            option :rewrite_server, :type        => Hash[Regexp => String],
-                                    :usage       => '/REGEXP/:STRING',
-                                    :description => 'Server rewrite rules'
+            option :rewrite_server, type:        Hash[Regexp => String],
+                                    usage:       '/REGEXP/:STRING',
+                                    description: 'Server rewrite rules'
 
-            option :ignore, :type        => Set[Regexp],
-                            :flag        => '-i',
-                            :usage       => '/REGEXP/ [...]',
-                            :description => 'Ignore rules'
+            option :ignore, type:        Set[Regexp],
+                            flag:        '-i',
+                            usage:       '/REGEXP/ [...]',
+                            description: 'Ignore rules'
 
-            option :ignore_client, :type        => Set[Regexp],
-                                   :usage       => '/REGEXP/ [...]',
-                                   :description => 'Client ignore rules'
+            option :ignore_client, type:        Set[Regexp],
+                                   usage:       '/REGEXP/ [...]',
+                                   description: 'Client ignore rules'
 
-            option :ignore_server, :type        => Set[String],
-                                   :usage       => '/REGEXP/ [...]',
-                                   :description => 'Server ignore rules'
+            option :ignore_server, type:        Set[String],
+                                   usage:       '/REGEXP/ [...]',
+                                   description: 'Server ignore rules'
 
-            option :close, :type        => Set[Regexp],
-                           :flag        => '-C',
-                           :usage       => '/REGEXP/ [...]',
-                           :description => 'Close rules'
+            option :close, type:        Set[Regexp],
+                           flag:        '-C',
+                           usage:       '/REGEXP/ [...]',
+                           description: 'Close rules'
 
-            option :close_client, :type        => Set[Regexp],
-                                  :usage       => '/REGEXP/ [...]',
-                                  :description => 'Client close rules'
+            option :close_client, type:        Set[Regexp],
+                                  usage:       '/REGEXP/ [...]',
+                                  description: 'Client close rules'
 
-            option :close_server, :type        => Set[Regexp],
-                                  :usage       => '/REGEXP/ [...]',
-                                  :description => 'Server close rules'
+            option :close_server, type:        Set[Regexp],
+                                  usage:       '/REGEXP/ [...]',
+                                  description: 'Server close rules'
 
-            option :reset, :type        => Set[Regexp],
-                           :flag        => '-R',
-                           :usage       => '/REGEXP/ [...]',
-                           :description => 'Reset rules'
+            option :reset, type:        Set[Regexp],
+                           flag:        '-R',
+                           usage:       '/REGEXP/ [...]',
+                           description: 'Reset rules'
 
-            option :reset_client, :type        => Set[Regexp],
-                                  :usage       => '/REGEXP/ [...]',
-                                  :description => 'Client reset rules'
+            option :reset_client, type:        Set[Regexp],
+                                  usage:       '/REGEXP/ [...]',
+                                  description: 'Client reset rules'
 
-            option :reset_server, :type        => Set[Regexp],
-                                  :usage       => '/REGEXP/ [...]',
-                                  :description => 'Server reset rules'
+            option :reset_server, type:        Set[Regexp],
+                                  usage:       '/REGEXP/ [...]',
+                                  description: 'Server reset rules'
 
             examples [
               "ronin net:proxy --port 8080 --server google.com:80",
@@ -192,9 +192,9 @@ module Ronin
             #
             def execute
               @proxy = proxy_class.new(
-                :port   => @port,
-                :host   => @host,
-                :server => [@server_host, @server_port]
+                port:   @port,
+                host:   @host,
+                server: [@server_host, @server_port]
               )
 
               case @proxy

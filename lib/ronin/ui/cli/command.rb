@@ -45,23 +45,23 @@ module Ronin
       #
       #               summary 'My command'
       #
-      #               option :enable, :type        => true,
-      #                               :flag        => '-e',
-      #                               :description => 'Enables stuff'
+      #               option :enable, type:        true,
+      #                               flag:        '-e',
+      #                               description: 'Enables stuff'
       #
-      #               option :syntax, :type        => Symbol,
-      #                               :flag        => '-S',
-      #                               :description => 'Syntax to use'
+      #               option :syntax, type:        Symbol,
+      #                               flag:        '-S',
+      #                               description: 'Syntax to use'
       #
-      #               option :includes, :type        => Array[String],
-      #                                 :default     => [],
-      #                                 :flag        => '-I',
-      #                                 :usage       => 'FILE [...]',
-      #                                 :description => 'Files to include'
+      #               option :includes, type:        Array[String],
+      #                                 default:     [],
+      #                                 flag:        '-I',
+      #                                 usage:       'FILE [...]',
+      #                                 description: 'Files to include'
       #
-      #               option :params, :type        => Hash[Symbol => Object],
-      #                               :flag        => '-P',
-      #                               :description => 'Additional params'
+      #               option :params, type:        Hash[Symbol => Object],
+      #                               flag:        '-P',
+      #                               description: 'Additional params'
       #
       #               argument :path
       #
@@ -411,10 +411,10 @@ module Ronin
         #   The parameter that will contain the value of the option.
         #
         # @example
-        #   option :output, :type        => String,
-        #                   :flag        => '-f',
-        #                   :usage       => 'PATH',
-        #                   :description => 'The path to write the output to'
+        #   option :output, type:        String,
+        #                   flag:        '-f',
+        #                   usage:       'PATH',
+        #                   description: 'The path to write the output to'
         #
         # @since 1.4.0
         #
@@ -422,23 +422,23 @@ module Ronin
         #
         def self.option(name,options={})
           self.options[name] = {
-            :flag  => options[:flag],
-            :usage => options[:usage],
+            flag:  options[:flag],
+            usage: options[:usage]
           }
 
           return parameter(name,options)
         end
 
-        option :verbose, :type        => true,
-                         :flag        => '-v',
-                         :description => 'Enable verbose output'
+        option :verbose, type:        true,
+                         flag:        '-v',
+                         description: 'Enable verbose output'
 
-        option :quiet, :type        => true,
-                       :flag        => '-q',
-                       :description => 'Disable verbose output'
+        option :quiet, type:        true,
+                       flag:        '-q',
+                       description: 'Disable verbose output'
 
-        option :silent, :type         => true,
-                        :description  => 'Silence all output'
+        option :silent, type:         true,
+                        description:  'Silence all output'
 
         #
         # Enumerates through the options define by every sub-class.
@@ -516,8 +516,8 @@ module Ronin
         #   The parameter that will contain the value of the argument.
         #
         # @example
-        #   argument :file, :type        => String,
-        #                   :description => "The file to process"
+        #   argument :file, type:        String,
+        #                   description: "The file to process"
         #
         # @since 1.4.0
         #

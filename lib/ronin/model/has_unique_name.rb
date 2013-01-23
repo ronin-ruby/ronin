@@ -43,7 +43,7 @@ module Ronin
 
         base.module_eval do
           # The name of the model
-          property :name, String, :required => true, :unique => true
+          property :name, String, required: true, unique: true
         end
       end
 
@@ -65,7 +65,7 @@ module Ronin
         # @api public
         #
         def parse(name)
-          first_or_new(:name => name.strip)
+          first_or_new(name: name.strip)
         end
 
         #
@@ -83,7 +83,7 @@ module Ronin
         #
         def [](key)
           case key
-          when String, Symbol then first(:name => key.to_s)
+          when String, Symbol then first(name: key.to_s)
           else                     super(key)
           end
         end

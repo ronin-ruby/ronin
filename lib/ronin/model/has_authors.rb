@@ -40,11 +40,11 @@ module Ronin
 
         base.module_eval do
           # The authors associated with the model.
-          has 0..n, :authors, Ronin::Author, :through => DataMapper::Resource
+          has 0..n, :authors, Ronin::Author, through: DataMapper::Resource
 
           Ronin::Author.has 0..n, self.relationship_name,
-                                  :through => DataMapper::Resource,
-                                  :model => self
+                                  through: DataMapper::Resource,
+                                  model:   self
         end
       end
 
@@ -96,9 +96,9 @@ module Ronin
         #   Additional attributes to create the new author.
         #
         # @example
-        #   author :name => 'Anonymous',
-        #          :email => 'anon@example.com',
-        #          :organization => 'Anonymous LLC'
+        #   author name:         'Anonymous',
+        #          email:        'anon@example.com',
+        #          organization: 'Anonymous LLC'
         #
         # @api public
         #

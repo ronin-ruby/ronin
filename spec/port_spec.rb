@@ -7,32 +7,32 @@ describe Port do
   let(:number)   { 80    }
 
   subject do
-    described_class.new(:protocol => protocol, :number => number)
+    described_class.new(protocol: protocol, number: number)
   end
 
   before { subject.save }
 
   describe "validations" do
     it "should require a protocol" do
-      port = described_class.new(:number => port)
+      port = described_class.new(number: port)
 
       expect(port).not_to be_valid
     end
 
     it "should require a port number" do
-      port = described_class.new(:protocol => protocol)
+      port = described_class.new(protocol: protocol)
 
       expect(port).not_to be_valid
     end
 
     it "should only allow 'tcp' and 'udp' as protocols" do
-      port = described_class.new(:protocol => 'foo', :number => port)
+      port = described_class.new(protocol: 'foo', number: port)
 
       expect(port).not_to be_valid
     end
 
     it "should require unique protocol/port-number combinations" do
-      port = described_class.new(:protocol => protocol, :number => number)
+      port = described_class.new(protocol: protocol, number: number)
       expect(port).not_to be_valid
     end
   end

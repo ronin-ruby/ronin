@@ -39,8 +39,8 @@ describe Model::HasName do
     let(:name2) { 'foo2' }
 
     before do
-      subject.create!(:name => name1)
-      subject.create!(:name => name2)
+      subject.create!(name: name1)
+      subject.create!(name: name2)
     end
 
     it "should be able to find resources with similar names" do

@@ -33,8 +33,8 @@ module Ronin
     property :id, Serial
 
     # The URLs that use the scheme
-    has 0..n, :urls, :model     => 'URL',
-                     :child_key => [:scheme_id]
+    has 0..n, :urls, model:     'URL',
+                     child_key: [:scheme_id]
 
     #
     # The HTTP URL Scheme
@@ -42,7 +42,7 @@ module Ronin
     # @return [URLScheme]
     #
     def self.http
-      first(:name => 'http')
+      first(name: 'http')
     end
 
     #
@@ -51,7 +51,7 @@ module Ronin
     # @return [URLScheme]
     #
     def self.https
-      first(:name => 'https')
+      first(name: 'https')
     end
 
     #
@@ -60,7 +60,7 @@ module Ronin
     # @return [URLScheme]
     #
     def self.ftp
-      first(:name => 'ftp')
+      first(name: 'ftp')
     end
 
   end

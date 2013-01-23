@@ -27,8 +27,8 @@ describe Model::HasTitle do
     let(:title2) { 'Foo bar two' }
 
     before do
-      subject.create!(:title => title1)
-      subject.create!(:title => title2)
+      subject.create!(title: title1)
+      subject.create!(title: title2)
     end
 
     it "should be able to find resources with similar titles" do

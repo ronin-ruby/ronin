@@ -31,18 +31,18 @@ describe Model::HasVersion do
 
     before do
       subject.create(
-        :version => '1.1',
-        :content => 'one'
+        version: '1.1',
+        content: 'one'
       )
 
       subject.create(
-        :version => '1.1',
-        :content => 'two'
+        version: '1.1',
+        content: 'two'
       )
 
       subject.create(
-        :version => '1.2',
-        :content => 'three'
+        version: '1.2',
+        content: 'three'
       )
     end
 
@@ -65,23 +65,23 @@ describe Model::HasVersion do
 
     before do
       subject.create(
-        :version => '1.0',
-        :content => 'foo'
+        version: '1.0',
+        content: 'foo'
       )
 
       subject.create(
-        :version => '1.5',
-        :content => 'foo'
+        version: '1.5',
+        content: 'foo'
       )
 
       subject.create(
-        :version => '1.1',
-        :content => 'foo'
+        version: '1.1',
+        content: 'foo'
       )
     end
 
     it "should allow querying the latest revision" do
-      resource = subject.all(:content => 'foo').latest
+      resource = subject.all(content: 'foo').latest
 
       expect(resource.version).to eq('1.5')
     end

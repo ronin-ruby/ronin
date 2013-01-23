@@ -27,19 +27,19 @@ module Ronin
       # 1.0.0
       #
       migration :create_ip_address_mac_addresses_table,
-                :needs => :create_addresses_table do
+                needs: :create_addresses_table do
         up do
           create_table :ronin_ip_address_mac_addresses do
             column :id, Serial
-            column :ip_address_id, Integer, :not_null => true
-            column :mac_address_id, Integer, :not_null => true
-            column :created_at, Time, :not_null => true
+            column :ip_address_id, Integer, not_null: true
+            column :mac_address_id, Integer, not_null: true
+            column :created_at, Time, not_null: true
           end
 
           create_index :ronin_ip_address_mac_addresses,
                        :ip_address_id, :mac_address_id,
-                       :name => :unique_index_ronin_ip_address_mac_addresses,
-                       :unique => true
+                       name:   :unique_index_ronin_ip_address_mac_addresses,
+                       unique: true
         end
 
         down do

@@ -34,7 +34,7 @@ module Ronin
     belongs_to :user_name
 
     # The optional email address associated with the Credential
-    belongs_to :email_address, :required => false
+    belongs_to :email_address, required: false
 
     # Password of the credential
     belongs_to :password

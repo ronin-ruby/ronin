@@ -35,10 +35,11 @@ module Ronin
     property :id, Serial
 
     # Endianness of the architecture
-    property :endian, String, :set => ['little', 'big'], :required => true
+    property :endian, String, required: true,
+                              set:      ['little', 'big']
 
     # Address length of the architecture
-    property :address_length, Integer, :required => true
+    property :address_length, Integer, required: true
 
     #
     # The x86 Architecture
@@ -46,7 +47,7 @@ module Ronin
     # @return [Arch]
     #
     def self.x86
-      first(:name => 'x86')
+      first(name: 'x86')
     end
 
     #
@@ -75,7 +76,7 @@ module Ronin
     # @return [Arch]
     #
     def self.x86_64
-      first(:name => 'x86-64')
+      first(name: 'x86-64')
     end
 
     #
@@ -84,7 +85,7 @@ module Ronin
     # @return [Arch]
     #
     def self.ia64
-      first(:name => 'ia64')
+      first(name: 'ia64')
     end
 
     #
@@ -93,7 +94,7 @@ module Ronin
     # @return [Arch]
     #
     def self.ppc
-      first(:name => 'ppc')
+      first(name: 'ppc')
     end
 
     #
@@ -102,7 +103,7 @@ module Ronin
     # @return [Arch]
     #
     def self.ppc64
-      first(:name => 'ppc64')
+      first(name: 'ppc64')
     end
 
     #
@@ -111,7 +112,7 @@ module Ronin
     # @return [Arch]
     #
     def self.sparc
-      first(:name => 'sparc')
+      first(name: 'sparc')
     end
 
     #
@@ -120,7 +121,7 @@ module Ronin
     # @return [Arch]
     #
     def self.sparc64
-      first(:name => 'sparc64')
+      first(name: 'sparc64')
     end
 
     #
@@ -129,7 +130,7 @@ module Ronin
     # @return [Arch]
     #
     def self.mips_le
-      first(:name => 'mips_le')
+      first(name: 'mips_le')
     end
 
     #
@@ -138,7 +139,7 @@ module Ronin
     # @return [Arch]
     #
     def self.mips_be
-      first(:name => 'mips_be')
+      first(name: 'mips_be')
     end
 
     #
@@ -152,7 +153,7 @@ module Ronin
     # @return [Arch]
     #
     def self.arm_le
-      first(:name => 'arm_le')
+      first(name: 'arm_le')
     end
 
     #
@@ -161,7 +162,7 @@ module Ronin
     # @return [Arch]
     #
     def self.arm_be
-      first(:name => 'arm_be')
+      first(name: 'arm_be')
     end
 
     #

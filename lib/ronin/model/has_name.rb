@@ -39,7 +39,7 @@ module Ronin
 
         base.module_eval do
           # The name of the model
-          property :name, String, :required => true, :index => true
+          property :name, String, required: true, index: true
         end
       end
 

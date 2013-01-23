@@ -9,8 +9,8 @@ describe EmailAddress do
 
   subject {
     described_class.new(
-      :user_name => {:name => user},
-      :host_name => {:address => host}
+      user_name: {name: user},
+      host_name: {address: host}
     )
   }
 

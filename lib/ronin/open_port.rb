@@ -33,16 +33,16 @@ module Ronin
     property :id, Serial
 
     # The IP Address that was scanned
-    belongs_to :ip_address, :model => 'IPAddress'
+    belongs_to :ip_address, model: 'IPAddress'
 
     # The port
     belongs_to :port
 
     # The service detected on the port
-    belongs_to :service, :required => false
+    belongs_to :service, required: false
 
     # The software running on the open port
-    belongs_to :software, :required => false
+    belongs_to :software, required: false
 
     # Credentials used by the service running on the port
     has 0..n, :service_credentials

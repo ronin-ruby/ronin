@@ -6,7 +6,7 @@ describe OS do
   let(:name)    { 'Linux'  }
   let(:version) { '2.6.11' }
 
-  subject { described_class.new(:name => name, :version => version) }
+  subject { described_class.new(name: name, version: version) }
 
   describe "predefine" do
     it "should provide methods for built-in described_classes" do
@@ -38,7 +38,7 @@ describe OS do
     end
 
     context "without a version" do
-      subject { described_class.new(:name => name) }
+      subject { described_class.new(name: name) }
 
       it "should convert just the name if there is no version" do
         expect(subject.to_s).to eq(name)

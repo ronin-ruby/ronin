@@ -33,15 +33,15 @@ module Ronin
     property :id, Serial
 
     # The clear-text of the password
-    property :clear_text, String, :length => 256,
-                                  :required => true,
-                                  :unique => true
+    property :clear_text, String, length:   256,
+                                  required: true,
+                                  unique:   true
 
     # The credentials which use the password
     has 0..n, :credentials
 
     # The user names which use the password
-    has 0..n, :user_names, :through => :credentials
+    has 0..n, :user_names, through: :credentials
 
     #
     # Parses a password.
@@ -57,7 +57,7 @@ module Ronin
     # @api public
     #
     def self.parse(password)
-      first_or_new(:clear_text => password.to_s)
+      first_or_new(clear_text: password.to_s)
     end
 
     #
@@ -82,15 +82,15 @@ module Ronin
     #   Unknown Digest algorithm.
     #
     # @example
-    #   pass = Password.new(:clear_text => 'secret')
+    #   pass = Password.new(clear_text: 'secret')
     #   
     #   pass.digest(:sha1)
     #   # => "e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4"
     #   
-    #   pass.digest(:sha1, :prepend_salt => "A\x90\x00")
+    #   pass.digest(:sha1, prepend_salt: "A\x90\x00")
     #   # => "e2817656a48c49f24839ccf9295b389d8f985904"
     #   
-    #   pass.digest(:sha1, :append_salt => "BBBB")
+    #   pass.digest(:sha1, append_salt: "BBBB")
     #   # => "aa6ca21e446d425fc044bbb26e950a788444a5b8"
     #
     # @since 1.0.0

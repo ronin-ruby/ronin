@@ -28,19 +28,19 @@ module Ronin
       # 1.0.0
       #
       migration :create_repositories_table,
-                :needs => [
+                needs: [
                   :create_licenses_table,
                   :create_authors_table
                 ] do
         up do
           create_table :ronin_repositories do
-            column :id, Integer, :serial => true
+            column :id, Integer, serial: true
             column :scm, String
-            column :path, FilePath, :not_null => true 
+            column :path, FilePath, not_null: true 
             column :uri, DataMapper::Property::URI
-            column :installed, Boolean, :default => false
+            column :installed, Boolean, default: false
             column :name, String
-            column :domain, String, :not_null => true
+            column :domain, String, not_null: true
             column :title, Text
             column :source, DataMapper::Property::URI
             column :website, DataMapper::Property::URI
@@ -50,12 +50,12 @@ module Ronin
           end
 
           create_table :ronin_author_repositories do
-            column :id, Integer, :serial => true
+            column :id, Integer, serial: true
             column :author_id, Integer
             column :repository_id, Integer
           end
 
-          create_index :ronin_repositories, :path, :unique => true
+          create_index :ronin_repositories, :path, unique: true
         end
 
         down do

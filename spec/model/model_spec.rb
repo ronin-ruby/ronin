@@ -25,7 +25,7 @@ describe Model do
     subject { base_model }
 
     it "should allow creating new instances of the model" do
-      resource = subject.new(:name => 'joe')
+      resource = subject.new(name: 'joe')
 
       expect(resource.name).to eq('joe')
     end
@@ -34,7 +34,7 @@ describe Model do
       subject { inherited_model }
 
       it "should call initialize when creating new instances of the model" do
-        resource = subject.new(:name => 'joe')
+        resource = subject.new(name: 'joe')
 
         expect(resource.name).to eq('joe')
         expect(resource.var).to eq(2)
@@ -46,7 +46,7 @@ describe Model do
     subject { inherited_model }
 
     it "should call initialize when creating a new resource" do
-      resource = subject.create!(:name => 'jim')
+      resource = subject.create!(name: 'jim')
 
       expect(resource.name).to eq('jim')
       expect(resource.var).to eq(2)
@@ -58,10 +58,10 @@ describe Model do
   describe ".first" do
     subject { inherited_model }
 
-    before { subject.create!(:name => 'bob') }
+    before { subject.create!(name: 'bob') }
 
     it "should call initialize when loading from the database" do
-      resource = subject.first(:name => 'bob')
+      resource = subject.first(name: 'bob')
 
       expect(resource.name).to eq('bob')
       expect(resource.var).to eq(2)

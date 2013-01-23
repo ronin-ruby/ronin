@@ -6,7 +6,7 @@ class ScriptClass
 
   property :id, Serial
 
-  parameter :x, :default => 1
+  parameter :x, default: 1
 
   attr_reader :y
 

@@ -30,7 +30,7 @@ module Ronin
       # 1.0.0
       #
       migration :create_urls_table,
-                :needs => [
+                needs: [
                   :create_url_schemes_table,
                   :create_url_query_params_table,
                   :create_addresses_table,
@@ -38,14 +38,14 @@ module Ronin
                 ] do
         up do
           create_table :ronin_urls do
-            column :id, Integer, :serial => true
-            column :scheme_id, Integer, :not_null => true
-            column :host_name_id, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :scheme_id, Integer, not_null: true
+            column :host_name_id, Integer, not_null: true
             column :port_id, Integer
             column :path, String
             column :fragment, String
             column :last_scanned_at, Time
-            column :created_at, Time, :not_null => true
+            column :created_at, Time, not_null: true
           end
 
           create_index :ronin_urls, :scheme_id,
@@ -53,8 +53,8 @@ module Ronin
                                     :port_id,
                                     :path,
                                     :fragment,
-                                    :name => :unique_index_ronin_urls,
-                                    :unique => true
+                                    name:   :unique_index_ronin_urls,
+                                    unique: true
         end
 
         down do

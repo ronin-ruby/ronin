@@ -56,56 +56,56 @@ module Ronin
 
           summary 'Manages the Ronin Database'
 
-          option :add, :type        => Symbol,
-                       :flag        => '-a',
-                       :usage       => 'NAME',
-                       :description => 'Adds a Database Repository'
+          option :add, type:        Symbol,
+                       flag:        '-a',
+                       usage:       'NAME',
+                       description: 'Adds a Database Repository'
 
-          option :set, :type        => Symbol,
-                       :flag        => '-s',
-                       :usage       => 'NAME',
-                       :description => 'Sets the information for a Database Repository'
+          option :set, type:        Symbol,
+                       flag:        '-s',
+                       usage:       'NAME',
+                       description: 'Sets the information for a Database Repository'
 
-          option :remove, :type        => Symbol,
-                          :flag        => '-r',
-                          :usage       => 'NAME',
-                          :description => 'Removes a Database Repository'
+          option :remove, type:        Symbol,
+                          flag:        '-r',
+                          usage:       'NAME',
+                          description: 'Removes a Database Repository'
 
-          option :clear, :type        => Symbol,
-                         :flag        => '-C',
-                         :usage       => 'NAME',
-                         :description => 'WARNING: Clears a Database Repository'
+          option :clear, type:        Symbol,
+                         flag:        '-C',
+                         usage:       'NAME',
+                         description: 'WARNING: Clears a Database Repository'
           
           # repository options
-          option :uri, :type        => String,
-                       :usage       => 'sqlite3:///path',
-                       :description => 'The URI for the Database Repository'
+          option :uri, type:        String,
+                       usage:       'sqlite3:///path',
+                       description: 'The URI for the Database Repository'
 
-          option :adapter, :type        => String,
-                           :usage       => 'sqlite3|mysql|postgres',
-                           :description => 'The Database Adapter'
+          option :adapter, type:        String,
+                           usage:       'sqlite3|mysql|postgres',
+                           description: 'The Database Adapter'
 
-          option :host, :type        => String,
-                        :usage       => 'HOST',
-                        :description => 'The host running the Database'
+          option :host, type:        String,
+                        usage:       'HOST',
+                        description: 'The host running the Database'
 
-          option :port, :type        => Integer,
-                        :usage       => 'PORT',
-                        :description => 'The port the Database is listening on'
+          option :port, type:          Integer,
+                        usage:         'PORT',
+                        description:   'The port the Database is listening on'
 
-          option :user, :type        => String,
-                        :description => 'User to authenticate with'
+          option :user, type:        String,
+                        description: 'User to authenticate with'
 
-          option :password, :type        => String,
-                            :description => 'Password to authenticate with'
+          option :password, type:        String,
+                            description: 'Password to authenticate with'
 
-          option :database, :type        => String,
-                            :usage       => 'NAME',
-                            :description => 'Database name'
+          option :database, type:        String,
+                            usage:       'NAME',
+                            description: 'Database name'
 
-          option :path, :type        => String,
-                        :usage       => 'PATH',
-                        :description => 'Path to the Database file.'
+          option :path, type:        String,
+                        usage:       'PATH',
+                        description: 'Path to the Database file.'
 
           #
           # Displays or modifies the Ronin Database configuration.
@@ -156,7 +156,7 @@ module Ronin
               end
             else
               Ronin::Database.repositories.each do |name,uri|
-                print_hash uri, :title => name
+                print_hash uri, title: name
               end
             end
           end
@@ -174,21 +174,21 @@ module Ronin
               uri = Addressable::URI.parse(@uri)
 
               {
-                :adapter  => uri.scheme,
-                :host     => uri.host,
-                :port     => uri.port,
-                :user     => uri.user,
-                :password => uri.password,
-                :database => uri.path
+                adapter:  uri.scheme,
+                host:     uri.host,
+                port:     uri.port,
+                user:     uri.user,
+                password: uri.password,
+                database: uri.path
               }
             else
               {
-                :adapter  => @adapter,
-                :host     => @host,
-                :port     => @port,
-                :user     => @user,
-                :password => @password,
-                :database => (@database || @path)
+                adapter:  @adapter,
+                host:     @host,
+                port:     @port,
+                user:     @user,
+                password: @password,
+                database: (@database || @path)
               }
             end
           end

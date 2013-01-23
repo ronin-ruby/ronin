@@ -40,9 +40,9 @@ module Ronin
 
         base.module_eval do
           # The license
-          belongs_to :license, Ronin::License, :required => false
+          belongs_to :license, Ronin::License, required: false
 
-          Ronin::License.has 0..n, self.relationship_name, :model => self
+          Ronin::License.has 0..n, self.relationship_name, model: self
         end
       end
 
@@ -79,13 +79,13 @@ module Ronin
         def licensed_under(license)
           conditions = case license
                        when License
-                         {:license => license}
+                         {license: license}
                        when Symbol
                          unless License.methods(false).include?(license)
                            raise(ArgumentError,"unknown license: #{license}")
                          end
 
-                         {:license => License.send(license)}
+                         {license: License.send(license)}
                        else
                          {'license.name' => license.to_s}
                        end

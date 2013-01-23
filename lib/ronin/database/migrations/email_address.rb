@@ -28,21 +28,21 @@ module Ronin
       # 1.0.0
       #
       migration :create_email_addresses_table,
-                :needs => [
+                needs: [
                   :create_user_names_table,
                   :create_addresses_table
                 ] do
         up do
           create_table :ronin_email_addresses do
             column :id, Serial
-            column :user_name_id, Integer, :not_null => true
-            column :host_name_id, Integer, :not_null => true
-            column :created_at, Time, :not_null => true
+            column :user_name_id, Integer, not_null: true
+            column :host_name_id, Integer, not_null: true
+            column :created_at, Time, not_null: true
           end
 
           create_index :ronin_email_addresses, :user_name_id, :host_name_id,
-                       :name => :unique_index_ronin_email_addresses,
-                       :unique => true
+                       name:   :unique_index_ronin_email_addresses,
+                       unique: true
         end
 
         down do

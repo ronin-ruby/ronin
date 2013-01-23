@@ -55,20 +55,20 @@ module Ronin
 
           summary 'Installs Ronin Repositories'
 
-          option :rsync, :type        => true,
-                         :description => 'Install via rsync'
+          option :rsync, type:        true,
+                         description: 'Install via rsync'
 
-          option :svn, :type        => true,
-                       :description => 'Install via SubVersion (SVN)'
+          option :svn, type:        true,
+                       description: 'Install via SubVersion (SVN)'
 
-          option :hg, :type        => true,
-                      :description => 'Install via Mercurial (Hg)'
+          option :hg, type:        true,
+                      description: 'Install via Mercurial (Hg)'
 
-          option :git, :type        => true,
-                       :description => 'Install via Git'
+          option :git, type:        true,
+                       description: 'Install via Git'
 
-          argument :uri, :type        => String,
-                         :description => 'The URI of the Repository'
+          argument :uri, type:        String,
+                         description: 'The URI of the Repository'
 
           examples [
             "ronin install git://github.com/user/repo.git",
@@ -102,10 +102,10 @@ module Ronin
             repository = begin
                            if File.directory?(@uri)
                              # add local repositories
-                             Repository.add(:path => @uri, :scm => scm)
+                             Repository.add(path: @uri, scm: scm)
                            else
                              # install remote repositories
-                             Repository.install(:uri => @uri, :scm => scm)
+                             Repository.install(uri: @uri, scm: scm)
                            end
                          rescue DuplicateRepository => e
                            print_error e.message

@@ -5,7 +5,7 @@ require 'ronin/mac_address'
 describe MACAddress do
   let(:address) { '00:01:02:03:04:05' }
 
-  subject { described_class.new(:address => address) }
+  subject { described_class.new(address: address) }
 
   describe "extract" do
     subject { described_class }

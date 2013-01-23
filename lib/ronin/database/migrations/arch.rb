@@ -28,13 +28,13 @@ module Ronin
       migration :create_arches_table do
         up do
           create_table :ronin_arches do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
-            column :endian, String, :not_null => true
-            column :address_length, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
+            column :endian, String, not_null: true
+            column :address_length, Integer, not_null: true
           end
 
-          create_index :ronin_arches, :name, :unique => true
+          create_index :ronin_arches, :name, unique: true
         end
 
         down do

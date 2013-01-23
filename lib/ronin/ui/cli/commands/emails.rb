@@ -53,30 +53,30 @@ module Ronin
 
           summary 'Manages EmailAddresses'
 
-          query_option :with_hosts, :type        => Array,
-                                    :flag        => '-H',
-                                    :usage       => 'HOST [...]',
-                                    :description => 'Searches for the associated HOST(s)'
+          query_option :with_hosts, type:        Array,
+                                    flag:        '-H',
+                                    usage:       'HOST [...]',
+                                    description: 'Searches for the associated HOST(s)'
 
-          query_option :with_ips, :type        => Array,
-                                  :flag        => '-I',
-                                  :usage       => 'IP [...]',
-                                  :description => 'Searches for the associated IP(s)'
+          query_option :with_ips, type:        Array,
+                                  flag:        '-I',
+                                  usage:       'IP [...]',
+                                  description: 'Searches for the associated IP(s)'
 
-          query_option :with_users, :type        => Array,
-                                    :flag        => '-u',
-                                    :usage       => 'NAME [...]',
-                                    :description => 'Searches for the associated UserName(s)'
+          query_option :with_users, type:        Array,
+                                    flag:        '-u',
+                                    usage:       'NAME [...]',
+                                    description: 'Searches for the associated UserName(s)'
 
-          option :list, :type        => true,
-                        :default     => true,
-                        :flag        => '-l',
-                        :description => 'Lists the EmailAddresses'
+          option :list, type:        true,
+                        default:     true,
+                        flag:        '-l',
+                        description: 'Lists the EmailAddresses'
 
-          option :import, :type        => String,
-                          :flag        => '-i',
-                          :usage       => 'FILE',
-                          :description => 'Imports EmailAddresses from the FILE'
+          option :import, type:        String,
+                          flag:        '-i',
+                          usage:       'FILE',
+                          description: 'Imports EmailAddresses from the FILE'
 
         end
       end

@@ -36,15 +36,15 @@ module Ronin
     property :id, Serial
 
     # Version of the Operating System
-    property :version, String, :index => true
+    property :version, String, index: true
 
     # Any OS guesses for the Operating System
-    has 0..n, :os_guesses, :model => 'OSGuess'
+    has 0..n, :os_guesses, model: 'OSGuess'
 
     # Any IP Addresses that might be running the Operating System
-    has 0..n, :ip_addresses, :through => :os_guesses,
-                             :model => 'IPAddress',
-                             :via => :ip_address
+    has 0..n, :ip_addresses, through: :os_guesses,
+                             model:   'IPAddress',
+                             via:     :ip_address
 
     #
     # The IP Address that was most recently guessed to be using the
@@ -59,7 +59,7 @@ module Ronin
     # @api public
     #
     def recent_ip_address
-      relation = self.os_guesses.first(:order => [:created_at.desc])
+      relation = self.os_guesses.first(order: [:created_at.desc])
 
       if relation
         return relation.ip_address
@@ -73,8 +73,9 @@ module Ronin
     #   The OS name and version.
     #
     # @example
-    #   os = OS.new(:name => 'Linux', :version => '2.6.11')
-    #   os.to_s # => "Linux 2.6.11"
+    #   os = OS.new(name: 'Linux', version: '2.6.11')
+    #   os.to_s
+    #   # => "Linux 2.6.11"
     #
     # @api public
     #
@@ -93,7 +94,7 @@ module Ronin
     # @return [OS]
     #
     def self.linux(version=nil)
-      first_or_create(:name => 'Linux', :version => version)
+      first_or_create(name: 'Linux', version: version)
     end
 
     #
@@ -105,7 +106,7 @@ module Ronin
     # @return [OS]
     #
     def self.freebsd(version=nil)
-      first_or_create(:name => 'FreeBSD', :version => version)
+      first_or_create(name: 'FreeBSD', version: version)
     end
 
     #
@@ -117,7 +118,7 @@ module Ronin
     # @return [OS]
     #
     def self.openbsd(version=nil)
-      first_or_create(:name => 'OpenBSD', :version => version)
+      first_or_create(name: 'OpenBSD', version: version)
     end
 
     #
@@ -129,7 +130,7 @@ module Ronin
     # @return [OS]
     #
     def self.netbsd(version=nil)
-      first_or_create(:name => 'NetBSD', :version => version)
+      first_or_create(name: 'NetBSD', version: version)
     end
 
     #
@@ -141,7 +142,7 @@ module Ronin
     # @return [OS]
     #
     def self.osx(version=nil)
-      first_or_create(:name => 'OS X', :version => version)
+      first_or_create(name: 'OS X', version: version)
     end
 
     #
@@ -153,7 +154,7 @@ module Ronin
     # @return [OS]
     #
     def self.solaris(version=nil)
-      first_or_create(:name => 'Solaris', :version => version)
+      first_or_create(name: 'Solaris', version: version)
     end
 
     #
@@ -165,7 +166,7 @@ module Ronin
     # @return [OS]
     #
     def self.unix(version=nil)
-      first_or_create(:name => 'UNIX', :version => version)
+      first_or_create(name: 'UNIX', version: version)
     end
 
     #
@@ -177,7 +178,7 @@ module Ronin
     # @return [OS]
     #
     def self.windows(version=nil)
-      first_or_create(:name => 'Windows', :version => version)
+      first_or_create(name: 'Windows', version: version)
     end
 
   end

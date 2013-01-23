@@ -29,20 +29,20 @@ module Ronin
   class MACAddress < Address
 
     # The MAC address
-    property :address, String, :length => 17..17,
-                               :required => true,
-                               :unique => true,
-                               :format => /^#{Regexp::MAC}$/,
-                               :messages => {
-                                 :format => 'Must be a valid MAC address'
+    property :address, String, length:   17..17,
+                               required: true,
+                               unique:   true,
+                               format:   /^#{Regexp::MAC}$/,
+                               messages: {
+                                 format: 'Must be a valid MAC address'
                                }
 
     # The IP Addresses the MAC Address hosts
-    has 0..n, :ip_address_mac_addresses, :model => 'IPAddressMACAddress'
+    has 0..n, :ip_address_mac_addresses, model: 'IPAddressMACAddress'
 
     # The IP Addresses associated with the MAC Address
-    has 0..n, :ip_addresses, :through => :ip_address_mac_addresses,
-                             :model => 'IPAddress'
+    has 0..n, :ip_addresses, through: :ip_address_mac_addresses,
+                             model:   'IPAddress'
 
     #
     # Extracts MAC addresses from the given text.
@@ -87,7 +87,7 @@ module Ronin
     #
     def recent_ip_address
       self.ip_address_mac_addresses.all(
-        :order => [:created_at.desc]
+        order: [:created_at.desc]
       ).ip_addresses.first
     end
 

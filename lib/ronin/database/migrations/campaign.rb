@@ -28,13 +28,13 @@ module Ronin
       migration :create_campaigns_table do
         up do
           create_table :ronin_campaigns do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
-            column :description, Text, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
+            column :description, Text, not_null: true
             column :created_at, Time
           end
 
-          create_index :ronin_campaigns, :name, :unique => true
+          create_index :ronin_campaigns, :name, unique: true
         end
 
         down do
@@ -46,7 +46,7 @@ module Ronin
       # 1.1.0
       #
       migration :add_updated_at_column_to_campaigns_table,
-                :needs => :create_campaigns_table do
+                needs: :create_campaigns_table do
         up do
           modify_table :ronin_campaigns do
             add_column :updated_at, Time

@@ -33,13 +33,13 @@ module Ronin
     property :id, Serial
 
     # The name of the URL query param
-    property :name, String, :length   => 256,
-                            :required => true,
-                            :unique   => true
+    property :name, String, length:   256,
+                            required: true,
+                            unique:   true
 
     # The URL query params
-    has 0..n, :query_params, :model     => 'URLQueryParam',
-                             :child_key => [:name_id]
+    has 0..n, :query_params, model:     'URLQueryParam',
+                             child_key: [:name_id]
 
     #
     # Specifies when the URL query param name was first seen.
@@ -52,7 +52,7 @@ module Ronin
     # @api public
     #
     def created_at
-      if (url = self.query_params.urls.first(:fields => [:created_at]))
+      if (url = self.query_params.urls.first(fields: [:created_at]))
         url.created_at
       end
     end

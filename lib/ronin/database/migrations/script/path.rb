@@ -24,14 +24,14 @@ module Ronin
   module Database
     module Migrations
       migration :create_script_paths_table,
-                :needs => :create_repositories_table do
+                needs: :create_repositories_table do
         up do
           create_table :ronin_script_paths do
-            column :id, Integer, :serial => true
-            column :path, FilePath, :not_null => true
-            column :timestamp, Time, :not_null => true
-            column :class_name, String, :not_null => true
-            column :repository_id, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :path, FilePath, not_null: true
+            column :timestamp, Time, not_null: true
+            column :class_name, String, not_null: true
+            column :repository_id, Integer, not_null: true
           end
         end
 

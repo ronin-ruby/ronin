@@ -61,7 +61,7 @@ describe Script::Path do
     end
 
     it "should cache the loaded object along with the cached file" do
-      obj = script_class.first(:script_path => subject)
+      obj = script_class.first(script_path: subject)
       
       expect(obj).not_to be_nil
     end
@@ -78,7 +78,7 @@ describe Script::Path do
     it "should delete the cached object along with the cached file" do
       subject.destroy
 
-      expect(script_class.first(:script_path => subject)).to be_nil
+      expect(script_class.first(script_path: subject)).to be_nil
     end
   end
 
@@ -151,7 +151,7 @@ describe Script::Path do
     subject { repo.find_script('cached/modified.rb') }
 
     before do
-      subject.update(:timestamp => (subject.timestamp - 10))
+      subject.update(timestamp: (subject.timestamp - 10))
     end
 
     it "should not have updated code" do
@@ -171,17 +171,17 @@ describe Script::Path do
     subject { repo.find_script('cached/missing.rb') }
 
     before do
-      subject.update(:path => File.join('','missing','file.rb'))
+      subject.update(path: File.join('','missing','file.rb'))
 
       subject.sync
     end
 
     it "should delete the cached files" do
-      expect(described_class.count(:id => subject.id)).to eq(0)
+      expect(described_class.count(id: subject.id)).to eq(0)
     end
 
     it "should delete cached objects for missing files" do
-      expect(script_class.count(:script_path => subject)).to eq(0)
+      expect(script_class.count(script_path: subject)).to eq(0)
     end
   end
 end

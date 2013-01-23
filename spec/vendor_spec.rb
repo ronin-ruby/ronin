@@ -5,7 +5,7 @@ require 'ronin/vendor'
 describe Vendor do
   let(:name) { 'TestCo' }
 
-  subject { described_class.new(:name => name) }
+  subject { described_class.new(name: name) }
 
   describe "validations" do
     it "should require name attribute" do

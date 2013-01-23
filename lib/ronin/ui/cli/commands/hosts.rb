@@ -55,40 +55,40 @@ module Ronin
 
           summary 'Manages HostNames'
 
-          query_option :with_ips, :type        => Array,
-                                  :flag        => '-I',
-                                  :usage       => 'IP [...]',
-                                  :description => 'Searches for the associated IP(s)'
+          query_option :with_ips, type:        Array,
+                                  flag:        '-I',
+                                  usage:       'IP [...]',
+                                  description: 'Searches for the associated IP(s)'
 
-          query_option :with_ports, :type        => Array[Integer],
-                                    :flag        => '-p',
-                                    :usage       => 'PORT [...]',
-                                    :description => 'Searches for the associated PORT(s)'
+          query_option :with_ports, type:        Array[Integer],
+                                    flag:        '-p',
+                                    usage:       'PORT [...]',
+                                    description: 'Searches for the associated PORT(s)'
 
-          query_option :domain, :type        => String,
-                                :flag        => '-D',
-                                :usage       => 'DOMAIN',
-                                :description => 'Searches for the associated parent DOMAIN'
+          query_option :domain, type:        String,
+                                flag:        '-D',
+                                usage:       'DOMAIN',
+                                description: 'Searches for the associated parent DOMAIN'
 
-          query_option :tld, :type        => String,
-                             :flag        => '-T',
-                             :usage       => 'TLD',
-                             :description => 'Searches for the associated TLD'
+          query_option :tld, type:        String,
+                             flag:        '-T',
+                             usage:       'TLD',
+                             description: 'Searches for the associated TLD'
 
-          option :list, :type        => true,
-                        :default     => true,
-                        :flag        => '-l',
-                        :description => 'Lists the HostNames'
+          option :list, type:        true,
+                        default:     true,
+                        flag:        '-l',
+                        description: 'Lists the HostNames'
 
-          option :lookup, :type        => String,
-                          :flag        => '-L',
-                          :usage       => 'IP',
-                          :description => 'Looks up HostNames for the IP'
+          option :lookup, type:        String,
+                          flag:        '-L',
+                          usage:       'IP',
+                          description: 'Looks up HostNames for the IP'
 
-          option :import, :type        => String,
-                          :flag        => '-i',
-                          :usage       => 'FILE',
-                          :description => 'Imports HostNames from the FILE'
+          option :import, type:        String,
+                          flag:        '-i',
+                          usage:       'FILE',
+                          description: 'Imports HostNames from the FILE'
 
           #
           # Queries the {HostName} model.
@@ -144,7 +144,7 @@ module Ronin
               end
 
               unless host.ip_addresses.empty?
-                print_array host.ip_addresses, :title => 'IP Addresses'
+                print_array host.ip_addresses, title: 'IP Addresses'
               end
 
               unless host.open_ports.empty?
@@ -160,11 +160,11 @@ module Ronin
               end
 
               unless host.email_addresses.empty?
-                print_array host.email_addresses, :title => 'Email Addresses'
+                print_array host.email_addresses, title: 'Email Addresses'
               end
 
               unless host.urls.empty?
-                print_array host.urls, :title => 'URLs'
+                print_array host.urls, title: 'URLs'
               end
             end
           end

@@ -33,31 +33,31 @@ module Ronin
 
         usage '[options] --'
 
-        query_option :named, :type  => String,
-                             :flag  => '-n',
-                             :usage => 'NAME'
+        query_option :named, type:  String,
+                             flag:  '-n',
+                             usage: 'NAME'
 
-        query_option :describing, :type  => String,
-                                  :flag  => '-d',
-                                  :usage => 'DESC'
+        query_option :describing, type:  String,
+                                  flag:  '-d',
+                                  usage: 'DESC'
 
-        query_option :revision, :type  => String,
-                                :flag  => '-V',
-                                :usage => 'REV'
+        query_option :revision, type:  String,
+                                flag:  '-V',
+                                usage: 'REV'
 
-        query_option :licensed_under, :type  => String,
-                                      :flag  => '-L',
-                                      :usage => 'LICENSE'
+        query_option :licensed_under, type:  String,
+                                      flag:  '-L',
+                                      usage: 'LICENSE'
 
-        option :file, :type  => String,
-                      :flag  => '-f',
-                      :usage => 'FILE'
+        option :file, type:  String,
+                      flag:  '-f',
+                      usage: 'FILE'
 
-        option :console, :type => true
+        option :console, type: true
 
-        argument :param_options, :type        => Array,
-                                 :default     => [],
-                                 :description => 'Additional options'
+        argument :param_options, type:        Array,
+                                 default:     [],
+                                 description: 'Additional options'
 
         #
         # Initializes the Script command.

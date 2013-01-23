@@ -23,23 +23,24 @@ require 'rspec'
 require 'tmpdir'
 
 RSpec.configure do |spec|
-  defaults = {
-    :user     => 'ronin_test',
-    :password => 'ronin_test',
-    :database => 'ronin_test'
-  }
-  adapter  = ENV.fetch('ADAPTER','sqlite3')
-
-  uri = case adapter
-        when 'sqlite3', 'sqlite'
-          path = File.join(Dir.tmpdir,'ronin_database.sqlite3')
-
-          {:adapter  => 'sqlite3', :database => path}
-        else
-          defaults.merge(:adapter => adapter)
-        end
-
   spec.before(:suite) do
+    defaults = {
+      user:     'ronin_test',
+      password: 'ronin_test',
+      database: 'ronin_test'
+    }
+    adapter  = ENV.fetch('ADAPTER','sqlite3')
+
+    uri = case adapter
+          when 'sqlite3', 'sqlite'
+            {
+              adapter:  'sqlite3',
+              database: Tempfile.new('ronin_database').path
+            }
+          else
+            defaults.merge(adapter: adapter)
+          end
+
     # setup the database
     Ronin::Database.setup(uri)
   end

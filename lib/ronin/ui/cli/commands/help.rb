@@ -47,8 +47,8 @@ module Ronin
 
           summary 'Displays the list of available commands or prints information on a specific command'
 
-          argument :command, :type        => String,
-                             :description => 'The command to display'
+          argument :command, type:        String,
+                             description: 'The command to display'
 
           #
           # Lists the available commands.
@@ -76,7 +76,7 @@ module Ronin
               exit -1
             end
 
-            print_array CLI.commands, :title => 'Available commands'
+            print_array CLI.commands, title: 'Available commands'
           end
 
         end

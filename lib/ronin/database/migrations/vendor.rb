@@ -28,11 +28,11 @@ module Ronin
       migration :create_vendors_table do
         up do
           create_table :ronin_vendors do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
           end
 
-          create_index :ronin_vendors, :name, :unique => true
+          create_index :ronin_vendors, :name, unique: true
         end
 
         down do

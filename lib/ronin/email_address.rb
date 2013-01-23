@@ -44,8 +44,8 @@ module Ronin
     belongs_to :host_name
 
     # Any IP addresses associated with the host name.
-    has 0..n, :ip_addresses, :through => :host_name,
-                             :model => 'IPAddress'
+    has 0..n, :ip_addresses, through: :host_name,
+                             model:   'IPAddress'
 
     # Any web credentials that are associated with the email address.
     has 0..n, :credentials
@@ -54,7 +54,7 @@ module Ronin
     timestamps :created_at
 
     # Validates the uniqueness of the user-name and the host-name.
-    validates_uniqueness_of :user_name, :scope => [:host_name]
+    validates_uniqueness_of :user_name, scope: [:host_name]
 
     #
     # Extracts email addresses from the given text.
@@ -170,8 +170,8 @@ module Ronin
       end
 
       return first_or_new(
-        :user_name => UserName.first_or_new(:name => user),
-        :host_name => HostName.first_or_new(:address => host)
+        user_name: UserName.first_or_new(name: user),
+        host_name: HostName.first_or_new(address: host)
       )
     end
 

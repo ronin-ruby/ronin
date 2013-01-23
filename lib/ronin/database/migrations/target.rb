@@ -28,20 +28,20 @@ module Ronin
       # 1.0.0
       #
       migration :create_targets_table,
-                :needs => [
+                needs: [
                   :create_campaigns_table,
                   :create_addresses_table
                 ] do
         up do
           create_table :ronin_targets do
-            column :id, Integer, :serial => true
-            column :campaign_id, Integer, :not_null => true
-            column :address_id, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :campaign_id, Integer, not_null: true
+            column :address_id, Integer, not_null: true
           end
 
           create_index :ronin_targets, :campaign_id, :address_id,
-                       :name => :unique_index_ronin_campaigns,
-                       :unique => true
+                       name:   :unique_index_ronin_campaigns,
+                       unique: true
         end
 
         down do
@@ -53,7 +53,7 @@ module Ronin
       # 1.1.0
       #
       migration :add_created_at_column_to_targets_table,
-                :needs => :create_targets_table do
+                needs: :create_targets_table do
         up do
           modify_table :ronin_targets do
             add_column :created_at, Time

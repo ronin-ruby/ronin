@@ -26,11 +26,11 @@ module Ronin
   class TCPPort < Port
 
     # The protocol used for the port
-    property :protocol, String, :default => 'tcp'
+    property :protocol, String, default: 'tcp'
 
     # The URLs that use the port
-    has 0..n, :urls, :model => 'URL',
-                     :child_key => [:port_id]
+    has 0..n, :urls, model:     'URL',
+                     child_key: [:port_id]
 
   end
 end

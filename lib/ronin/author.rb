@@ -43,7 +43,7 @@ module Ronin
     property :email, String
 
     # Author's site
-    property :site, URI, :length => 256
+    property :site, URI, length: 256
 
     # Author's biography
     property :biography, Text

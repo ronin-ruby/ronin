@@ -27,18 +27,18 @@ module Ronin
       # 1.0.0
       #
       migration :create_addresses_table,
-                :needs => :create_organizations_table do
+                needs: :create_organizations_table do
         up do
           create_table :ronin_addresses do
-            column :id, Integer, :serial => true
-            column :type, String, :not_null => true
+            column :id, Integer, serial: true
+            column :type, String, not_null: true
             column :version, Integer
-            column :address, String, :length => 256, :not_null => true
+            column :address, String, length: 256, not_null: true
             column :organization_id, Integer
-            column :created_at, Time, :not_null => true
+            column :created_at, Time, not_null: true
           end
 
-          create_index :ronin_addresses, :address, :unique => true
+          create_index :ronin_addresses, :address, unique: true
         end
 
         down do

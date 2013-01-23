@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'ronin/url_scheme'
 
 describe URLScheme do
-  before(:all) { described_class.create(:name => 'http') }
+  before(:all) { described_class.create(name: 'http') }
 
   describe "validations" do
     it "should require a name" do
@@ -11,7 +11,7 @@ describe URLScheme do
     end
 
     describe "name" do
-      subject { described_class.new(:name => 'http') }
+      subject { described_class.new(name: 'http') }
 
       it "should require a unique name" do
         expect(subject).not_to be_valid

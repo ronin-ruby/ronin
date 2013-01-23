@@ -20,17 +20,17 @@ describe Arch do
     describe "name" do
       before do
         described_class.create(
-          :name           => 'cats',
-          :endian         => 'little',
-          :address_length => 4
+          name:           'cats',
+          endian:         'little',
+          address_length: 4
         )
       end
 
       subject do
         described_class.new(
-          :name           => 'cats',
-          :endian         => 'big',
-          :address_length => 4
+          name:           'cats',
+          endian:         'big',
+          address_length: 4
         )
       end
 
@@ -42,8 +42,8 @@ describe Arch do
     describe "endian" do
       subject do
         described_class.new(
-          :name           => 'test',
-          :address_length => 4
+          name:           'test',
+          address_length: 4
         )
       end
 

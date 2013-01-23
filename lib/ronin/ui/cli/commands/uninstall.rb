@@ -51,8 +51,8 @@ module Ronin
 
           summary 'Uninstalls Ronin Repositories'
 
-          argument :repo, :type        => String,
-                          :description => 'Repository to uninstall'
+          argument :repo, type:        String,
+                          description: 'Repository to uninstall'
 
           examples [
             "ronin uninstall repo",

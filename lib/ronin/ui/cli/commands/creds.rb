@@ -55,20 +55,20 @@ module Ronin
 
           summary 'Lists Credentials'
 
-          query_option :for_user, :type        => String,
-                                  :flag        => '-u',
-                                  :usage       => 'USER',
-                                  :description => 'Username to search for'
+          query_option :for_user, type:        String,
+                                  flag:        '-u',
+                                  usage:       'USER',
+                                  description: 'Username to search for'
 
-          query_option :with_password, :type        => String,
-                                       :flag        => '-p',
-                                       :usage       => 'PASS',
-                                       :description => 'Password to search for'
+          query_option :with_password, type:        String,
+                                       flag:        '-p',
+                                       usage:       'PASS',
+                                       description: 'Password to search for'
 
-          option :list, :type        => true,
-                        :default     => true,
-                        :flag        => '-l',
-                        :description => 'List the Credentials'
+          option :list, type:        true,
+                        default:     true,
+                        flag:        '-l',
+                        description: 'List the Credentials'
 
           #
           # Queries the {Credential} model.

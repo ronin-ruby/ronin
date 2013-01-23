@@ -34,12 +34,12 @@ module Ronin
     include Model::Importable
 
     # The IP Address
-    property :address, IPAddress, :required => true,
-                                  :unique => true
+    property :address, IPAddress, required: true,
+                                  unique: true
 
     # Type of the address
-    property :version, Integer, :set => [4, 6],
-                                :default => lambda { |ip_addr,version|
+    property :version, Integer, set: [4, 6],
+                                default: lambda { |ip_addr,version|
                                   if ip_addr.address
                                     if ip_addr.address.ipv6? then 6
                                     else                          4
@@ -48,31 +48,31 @@ module Ronin
                                 }
 
     # The MAC Addresses associations
-    has 0..n, :ip_address_mac_addresses, :model => 'IPAddressMACAddress'
+    has 0..n, :ip_address_mac_addresses, model: 'IPAddressMACAddress'
 
     # The MAC Addresses associated with the IP Address
-    has 0..n, :mac_addresses, :through => :ip_address_mac_addresses,
-                              :model => 'MACAddress'
+    has 0..n, :mac_addresses, through: :ip_address_mac_addresses,
+                              model: 'MACAddress'
 
     # The host-names that the IP Address serves
-    has 0..n, :host_name_ip_addresses, :model => 'HostNameIPAddress'
+    has 0..n, :host_name_ip_addresses, model: 'HostNameIPAddress'
 
     # The host-names associated with the IP Address
-    has 0..n, :host_names, :through => :host_name_ip_addresses
+    has 0..n, :host_names, through: :host_name_ip_addresses
 
     # Open ports of the host
     has 0..n, :open_ports
 
     # Ports of the host
-    has 0..n, :ports, :through => :open_ports
+    has 0..n, :ports, through: :open_ports
 
     # Any OS guesses against the IP Address
-    has 0..n, :os_guesses, :model => 'OSGuess'
+    has 0..n, :os_guesses, model: 'OSGuess'
 
     # Any OSes that the IP Address might be running
-    has 0..n, :oses, :through => :os_guesses,
-                     :model => 'OS',
-                     :via => :os
+    has 0..n, :oses, through: :os_guesses,
+                     model: 'OS',
+                     via: :os
 
     #
     # Extracts and parses IP addresses from text.
@@ -116,7 +116,7 @@ module Ronin
     # @api public
     #
     def self.v4
-      all(:version => 4)
+      all(version: 4)
     end
 
     #
@@ -130,7 +130,7 @@ module Ronin
     # @api public
     #
     def self.v6
-      all(:version => 6)
+      all(version: 6)
     end
 
     #
@@ -201,7 +201,7 @@ module Ronin
     # @api public
     #
     def self.lookup(name,nameserver=nil)
-      host = HostName.first_or_new(:address => name)
+      host = HostName.first_or_new(address: name)
       resolver = Resolv.resolver(nameserver)
 
       ips = begin
@@ -212,8 +212,8 @@ module Ronin
         
       ips.map! do |addr|
         IPAddress.first_or_create(
-          :address => addr,
-          :host_names => [host]
+          address: addr,
+          host_names: [host]
         )
       end
 
@@ -243,8 +243,8 @@ module Ronin
 
       hosts.map! do |name|
         HostName.first_or_create(
-          :address => name,
-          :ip_addresses => [self]
+          address: name,
+          ip_addresses: [self]
         )
       end
 
@@ -263,7 +263,7 @@ module Ronin
     #
     def recent_mac_address
       self.ip_address_mac_addresses.all(
-        :order => [:created_at.desc]
+        order: [:created_at.desc]
       ).mac_addresses.first
     end
 
@@ -279,7 +279,7 @@ module Ronin
     #
     def recent_host_name
       self.host_name_ip_addresses.all(
-        :order => [:created_at.desc]
+        order: [:created_at.desc]
       ).host_names.first
     end
 
@@ -295,7 +295,7 @@ module Ronin
     # @api public
     #
     def recent_os_guess
-      self.os_guesses.all(:order => [:created_at.desc]).oses.first
+      self.os_guesses.all(order: [:created_at.desc]).oses.first
     end
 
     #
@@ -310,7 +310,7 @@ module Ronin
     #
     def last_scanned_at
       last_scanned_port = self.open_ports.first(
-        :order => [:last_scanned_at.desc]
+        order: [:last_scanned_at.desc]
       )
 
       return last_scanned_port.last_scanned_at if last_scanned_port

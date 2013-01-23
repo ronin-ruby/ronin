@@ -57,37 +57,37 @@ module Ronin
 
           summary 'Managed Campaigns'
 
-          query_option :named, :type        => String,
-                               :flag        => '-n',
-                               :description => 'Name to search for'
+          query_option :named, type:        String,
+                               flag:        '-n',
+                               description: 'Name to search for'
 
-          query_option :describing, :type        => String,
-                                    :flag        => '-d',
-                                    :description => 'Description to search for'
+          query_option :describing, type:        String,
+                                    flag:        '-d',
+                                    description: 'Description to search for'
 
-          query_option :targeting, :type        => Array,
-                                   :flag        => '-T',
-                                   :usage       => 'ADDR [...]',
-                                   :description => 'Addresses to search for'
+          query_option :targeting, type:        Array,
+                                   flag:        '-T',
+                                   usage:       'ADDR [...]',
+                                   description: 'Addresses to search for'
 
-          query_option :targeting_orgs, :type        => Array,
-                                        :flag        => '-O',
-                                        :usage       => 'NAME [...]',
-                                        :description => 'Orgs to search for'
+          query_option :targeting_orgs, type:        Array,
+                                        flag:        '-O',
+                                        usage:       'NAME [...]',
+                                        description: 'Orgs to search for'
 
-          option :list, :type        => true,
-                        :default     => true,
-                        :flag        => '-l',
-                        :description => 'List all Campaigns'
+          option :list, type:        true,
+                        default:     true,
+                        flag:        '-l',
+                        description: 'List all Campaigns'
 
-          option :add, :type        => String,
-                       :flag        => '-a',
-                       :usage       => 'NAME',
-                       :description => 'Create a new Campaign'
+          option :add, type:        String,
+                       flag:        '-a',
+                       usage:       'NAME',
+                       description: 'Create a new Campaign'
 
-          option :targets, :type        => Array,
-                           :usage       => 'ADDR [...]',
-                           :description => 'Addresses to target'
+          option :targets, type:        Array,
+                           usage:       'ADDR [...]',
+                           description: 'Addresses to target'
 
           #
           # Queries the {Campaign} model.
@@ -111,7 +111,7 @@ module Ronin
           # @since 1.0.0
           #
           def add(name)
-            campaign = Campaign.new(:name => name)
+            campaign = Campaign.new(name: name)
 
             if targets?
               # add targets to the campaign
@@ -148,11 +148,11 @@ module Ronin
               end
 
               unless campaign.organizations.empty?
-                print_array campaign.organizations, :title => 'Targeted Organizations'
+                print_array campaign.organizations, title: 'Targeted Organizations'
               end
 
               unless campaign.targets.empty?
-                print_array campaign.targets, :title => 'Targets'
+                print_array campaign.targets, title: 'Targets'
               end
             end
           end

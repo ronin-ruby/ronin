@@ -59,45 +59,45 @@ module Ronin
 
           summary 'Manages URLs'
 
-          query_option :http, :type        => true,
-                              :description => 'Searches for http:// URLs'
+          query_option :http, type:        true,
+                              description: 'Searches for http:// URLs'
 
-          query_option :https, :type        => true,
-                               :description => 'Searches for https:// URLs'
+          query_option :https, type:        true,
+                               description: 'Searches for https:// URLs'
 
-          query_option :hosts, :type        => Array,
-                               :flag        => '-H',
-                               :usage       => 'HOST [...]',
-                               :description => 'Searches for the associated HOST(s)'
+          query_option :hosts, type:        Array,
+                               flag:        '-H',
+                               usage:       'HOST [...]',
+                               description: 'Searches for the associated HOST(s)'
 
-          query_option :ports, :type        => Array[Integer],
-                               :flag        => '-P',
-                               :usage       => 'PORT [...]',
-                               :description => 'Searches for the associated PORT(s)'
+          query_option :ports, type:        Array[Integer],
+                               flag:        '-P',
+                               usage:       'PORT [...]',
+                               description: 'Searches for the associated PORT(s)'
 
-          query_option :directory, :type        => String, 
-                                   :flag        => '-d',
-                                   :description => 'Searches for the associated DIRECTORY'
+          query_option :directory, type:        String, 
+                                   flag:        '-d',
+                                   description: 'Searches for the associated DIRECTORY'
 
-          query_option :with_query_param, :type        => Array,
-                                          :flag        => '-q',
-                                          :usage       => 'NAME [...]',
-                                          :description => 'Searches for the associated query-param NAME(s)'
+          query_option :with_query_param, type:        Array,
+                                          flag:        '-q',
+                                          usage:       'NAME [...]',
+                                          description: 'Searches for the associated query-param NAME(s)'
 
-          query_option :with_query_value, :type        => Array,
-                                          :flag        => '-Q',
-                                          :usage       => 'VALUE [...]',
-                                          :description => 'Searches for the associated query-param VALUE(s)'
+          query_option :with_query_value, type:        Array,
+                                          flag:        '-Q',
+                                          usage:       'VALUE [...]',
+                                          description: 'Searches for the associated query-param VALUE(s)'
 
-          option :list, :type        => true,
-                        :default     => true,
-                        :flag        => '-l',
-                        :description => 'Lists the URLs'
+          option :list, type:        true,
+                        default:     true,
+                        flag:        '-l',
+                        description: 'Lists the URLs'
 
-          option :import, :type        => String,
-                          :flag        => '-i',
-                          :usage       => 'FILE',
-                          :description => 'Imports URLs from the FILE'
+          option :import, type:        String,
+                          flag:        '-i',
+                          usage:       'FILE',
+                          description: 'Imports URLs from the FILE'
 
           protected
 
@@ -128,7 +128,7 @@ module Ronin
                   params[param.name] = param.value
                 end
 
-                print_hash params, :title => 'Query Params'
+                print_hash params, title: 'Query Params'
               end
             end
           end

@@ -28,13 +28,13 @@ module Ronin
       migration :create_organizations_table do
         up do
           create_table :ronin_organizations do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
-            column :description, Text, :not_null => true
-            column :created_at, Time, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
+            column :description, Text, not_null: true
+            column :created_at, Time, not_null: true
           end
 
-          create_index :ronin_organizations, :name, :unique => true
+          create_index :ronin_organizations, :name, unique: true
         end
 
         down do

@@ -5,7 +5,7 @@ require 'ronin/password'
 describe Password do
   let(:password) { 'secret' }
 
-  subject { described_class.new(:clear_text => password) }
+  subject { described_class.new(clear_text: password) }
 
   describe "validations" do
     it "should require a clear-text password" do
@@ -27,13 +27,13 @@ describe Password do
     end
 
     it "should calculate the digest of the password and prepended salt" do
-      digest = subject.digest(:sha1, :prepend_salt => salt)
+      digest = subject.digest(:sha1, prepend_salt: salt)
       
       expect(digest).to eq(Digest::SHA1.hexdigest(salt + password))
     end
 
     it "should calculate the digest of the password and appended salt" do
-      digest = subject.digest(:sha1, :append_salt => salt)
+      digest = subject.digest(:sha1, append_salt: salt)
       
       expect(digest).to eq(Digest::SHA1.hexdigest(password + salt))
     end

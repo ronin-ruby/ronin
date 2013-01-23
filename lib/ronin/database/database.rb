@@ -44,8 +44,8 @@ module Ronin
 
     # Default database repository
     DEFAULT_REPOSITORY = {
-      :adapter => 'sqlite3',
-      :database => File.join(Config::PATH,'database.sqlite3')
+      adapter: 'sqlite3',
+      database: File.join(Config::PATH,'database.sqlite3')
     }
 
     @repositories = {}
@@ -185,7 +185,7 @@ module Ronin
     def self.setup(uri=nil)
       # setup the database log
       unless @log
-        if $DEBUG then log(:stream => $stderr, :level => :debug)
+        if $DEBUG then log(stream: $stderr, level: :debug)
         else           log
         end
       end

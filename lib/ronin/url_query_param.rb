@@ -33,13 +33,13 @@ module Ronin
     property :id, Serial
 
     # The name of the URL query param
-    belongs_to :name, :model => 'URLQueryParamName'
+    belongs_to :name, model: 'URLQueryParamName'
 
     # The value of the URL query param
     property :value, Text
 
     # The URL
-    belongs_to :url, :model => 'URL'
+    belongs_to :url, model: 'URL'
 
     #
     # Converts the URL query param to a String.

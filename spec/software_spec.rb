@@ -9,9 +9,9 @@ describe Software do
 
   subject do
     described_class.new(
-      :name    => name,
-      :version => version,
-      :vendor  => {:name => vendor}
+      name:    name,
+      version: version,
+      vendor:  {name: vendor}
     )
   end
 
@@ -35,7 +35,7 @@ describe Software do
 
     context "without a vendor" do
       subject do
-        described_class.new(:name => name, :version => version)
+        described_class.new(name: name, version: version)
       end
 
       it "should ignore the missing vendor information" do

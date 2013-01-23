@@ -38,13 +38,13 @@ module Ronin
       property :id, Serial
 
       # The path to the file where the object was defined in
-      property :path, FilePath, :required => true
+      property :path, FilePath, required: true
 
       # The timestamp of the cached file
-      property :timestamp, Time, :required => true
+      property :timestamp, Time, required: true
 
       # The class name of the cached object
-      property :class_name, String, :required => true
+      property :class_name, String, required: true
 
       # The repository the file was cached from
       belongs_to :repository
@@ -110,7 +110,7 @@ module Ronin
       #
       def cached_script
         if (cached_class = script_class)
-          return cached_class.first(:script_path => self)
+          return cached_class.first(script_path: self)
         end
       end
 

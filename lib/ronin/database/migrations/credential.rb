@@ -30,7 +30,7 @@ module Ronin
       # 1.0.0
       #
       migration :create_credentials_table,
-                :needs => [
+                needs: [
                   :create_user_names_table,
                   :create_passwords_table,
                   :create_open_ports_table,
@@ -40,8 +40,8 @@ module Ronin
         up do
           create_table :ronin_credentials do
             column :id, Serial
-            column :user_name_id, Integer, :not_null => true
-            column :password_id, Integer, :not_null => true
+            column :user_name_id, Integer, not_null: true
+            column :password_id, Integer, not_null: true
 
             column :open_port_id, Integer
             column :email_address_id, Integer
@@ -51,8 +51,8 @@ module Ronin
           create_index :ronin_credentials,
                        :user_name_id, :password_id,
                        :open_port_id, :email_address_id, :url_id,
-                       :name => :unique_index_ronin_credentials,
-                       :unique => true
+                       name:   :unique_index_ronin_credentials,
+                       unique: true
         end
 
         down do

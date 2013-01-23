@@ -45,10 +45,10 @@ module Ronin
     has 0..n, :targets
 
     # The addresses being targeted in the campaign
-    has 0..n, :addresses, :through => :targets
+    has 0..n, :addresses, through: :targets
 
     # The organization the campaign covers
-    has 0..n, :organizations, :through => :targets
+    has 0..n, :organizations, through: :targets
 
     #
     # Searches for all campaigns targeting an {Address}.
@@ -118,11 +118,11 @@ module Ronin
     # @api public
     #
     def target!(addr)
-      unless (address = Address.first(:address => addr))
+      unless (address = Address.first(address: addr))
         raise("unknown address #{addr.dump}")
       end
 
-      return Target.first_or_create(:campaign => self, :address => address)
+      return Target.first_or_create(campaign: self, address: address)
     end
 
   end

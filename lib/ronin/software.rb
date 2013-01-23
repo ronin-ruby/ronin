@@ -31,13 +31,15 @@ module Ronin
     property :id, Serial
 
     # Name
-    property :name, String, :required => true, :index => true
+    property :name, String, required: true,
+                            index:    true
 
     # Version
-    property :version, String, :required => true, :index => true
+    property :version, String, required: true,
+                               index:    true
 
     # The vendor of the software
-    belongs_to :vendor, :required => false
+    belongs_to :vendor, required: false
 
     # The open ports running the software
     has 0..n, :open_ports

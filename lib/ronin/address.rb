@@ -37,20 +37,20 @@ module Ronin
     property :id, Serial
 
     # The class name of the Address
-    property :type, Discriminator, :required => true
+    property :type, Discriminator, required: true
 
     # The Address
-    property :address, String, :required => true,
-                               :unique => true
+    property :address, String, required: true,
+                               unique:   true
 
     # The optional organization the host belongs to
-    belongs_to :organization, :required => false
+    belongs_to :organization, required: false
 
     # The targets associated with the address
     has 0..n, :targets
 
     # The campaigns targeting the address
-    has 0..n, :campaigns, :through => :targets
+    has 0..n, :campaigns, through: :targets
 
     # Tracks when the IP Address was first created
     timestamps :created_at
@@ -69,7 +69,7 @@ module Ronin
     # @api public
     #
     def self.parse(address)
-      first_or_new(:address => address)
+      first_or_new(address: address)
     end
 
     #
@@ -87,7 +87,7 @@ module Ronin
     #
     def self.[](key)
       case key
-      when String then first(:address => key)
+      when String then first(address: key)
       else             super(key)
       end
     end

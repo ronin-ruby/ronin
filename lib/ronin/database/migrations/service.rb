@@ -26,15 +26,15 @@ module Ronin
       #
       # 1.0.0
       #
-      migration :create_services_table, :needs => :create_organizations_table do
+      migration :create_services_table, needs: :create_organizations_table do
         up do
           create_table :ronin_services do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
             column :organization_id, Integer
           end
 
-          create_index :ronin_services, :name, :unique => true
+          create_index :ronin_services, :name, unique: true
         end
 
         down do

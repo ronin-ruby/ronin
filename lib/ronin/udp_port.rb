@@ -26,7 +26,7 @@ module Ronin
   class UDPPort < Port
 
     # The protocol used for the port
-    property :protocol, String, :default => 'tcp'
+    property :protocol, String, default: 'tcp'
 
   end
 end

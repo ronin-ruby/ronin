@@ -61,40 +61,40 @@ module Ronin
 
           summary 'Performs basic fuzzing of files'
 
-          option :input, :type        => String,
-                         :flag        => '-i',
-                         :usage       => 'FILE',
-                         :description => 'Input file to fuzz'
+          option :input, type:        String,
+                         flag:        '-i',
+                         usage:       'FILE',
+                         description: 'Input file to fuzz'
 
-          option :rules, :type        => Hash[String => String],
-                         :flag        => '-r',
-                         :usage       => '[PATTERN|/REGEXP/|STRING]:[METHOD|STRING*N[-M]]',
-                         :description => 'Fuzzing rules'
+          option :rules, type:        Hash[String => String],
+                         flag:        '-r',
+                         usage:       '[PATTERN|/REGEXP/|STRING]:[METHOD|STRING*N[-M]]',
+                         description: 'Fuzzing rules'
 
-          option :output, :type        => String,
-                          :flag        => '-o',
-                          :usgae       => 'PATH',
-                          :description => 'Output file path'
+          option :output, type:        String,
+                          flag:        '-o',
+                          usage:       'PATH',
+                          description: 'Output file path'
 
-          option :command, :type        => String,
-                           :flag        => '-c',
-                           :usage       => 'PROGRAM [OPTIONS|#string#|#path#] ...',
-                           :description => 'Template command to run'
+          option :command, type:        String,
+                           flag:        '-c',
+                           usage:       'PROGRAM [OPTIONS|#string#|#path#] ...',
+                           description: 'Template command to run'
 
-          option :tcp, :type        => String,
-                       :flag        => '-t',
-                       :usage       => 'HOST:PORT',
-                       :description => 'TCP service to fuzz'
+          option :tcp, type:        String,
+                       flag:        '-t',
+                       usage:       'HOST:PORT',
+                       description: 'TCP service to fuzz'
 
-          option :udp, :type        => String,
-                       :flag        => '-u',
-                       :usage       => 'HOST:PORT',
-                       :description => 'UDP service to fuzz'
+          option :udp, type:        String,
+                       flag:        '-u',
+                       usage:       'HOST:PORT',
+                       description: 'UDP service to fuzz'
 
-          option :pause, :type        => Float,
-                         :flag        => '-p',
-                         :usage       => 'SECONDS',
-                         :description => 'Pause in between mutations'
+          option :pause, type:        Float,
+                         flag:        '-p',
+                         usage:       'SECONDS',
+                         description: 'Pause in between mutations'
 
           examples [
             "ronin fuzzer -i request.txt -o bad.txt -r unix_path:bad_strings"

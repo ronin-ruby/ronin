@@ -27,12 +27,12 @@ module Ronin
       # 1.0.0
       #
       migration :create_softwares_table,
-                :needs => :create_vendors_table do
+                needs: :create_vendors_table do
         up do
           create_table :ronin_softwares do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
-            column :version, String, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
+            column :version, String, not_null: true
             column :vendor_id, Integer
           end
 

@@ -8,8 +8,8 @@ describe Credential do
 
   subject do
     described_class.new(
-      :user_name => {:name => name},
-      :password  => {:clear_text => password}
+      user_name: {name: name},
+      password:  {clear_text: password}
     )
   end
 

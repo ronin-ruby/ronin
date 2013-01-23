@@ -28,12 +28,12 @@ module Ronin
       migration :create_user_names_table do
         up do
           create_table :ronin_user_names do
-            column :id, Integer, :serial => true
-            column :name, String, :not_null => true
-            column :created_at, Time, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, not_null: true
+            column :created_at, Time, not_null: true
           end
 
-          create_index :ronin_user_names, :name, :unique => true
+          create_index :ronin_user_names, :name, unique: true
         end
 
         down do

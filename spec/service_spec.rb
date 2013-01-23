@@ -5,7 +5,7 @@ require 'ronin/service'
 describe Service do
   let(:name) { 'Apache' }
 
-  subject { described_class.new(:name => name) }
+  subject { described_class.new(name: name) }
   before  { subject.save }
 
   describe "validations" do
@@ -16,7 +16,7 @@ describe Service do
     end
 
     it "should require a unique name" do
-      service = described_class.new(:name => name)
+      service = described_class.new(name: name)
 
       expect(service).not_to be_valid
     end

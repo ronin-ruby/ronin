@@ -27,14 +27,14 @@ module Ronin
       # 1.1.0
       #
       migration :create_url_query_param_names_table,
-                :needs => :create_url_query_params_table do
+                needs: :create_url_query_params_table do
         up do
           create_table :ronin_url_query_param_names do
-            column :id, Integer, :serial => true
-            column :name, String, :length => 256, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, length: 256, not_null: true
           end
 
-          create_index :ronin_url_query_param_names, :name, :unique => true
+          create_index :ronin_url_query_param_names, :name, unique: true
 
           # select any previous URLQueryParam entries before recreating the table
           query_params = adapter.select('SELECT id,name,value,url_id FROM ronin_url_query_params')
@@ -42,10 +42,10 @@ module Ronin
           # recreate the `ronin_url_query_params` table
           drop_table :ronin_url_query_params
           create_table :ronin_url_query_params do
-            column :id, Integer, :serial => true
-            column :name_id, Integer, :not_null => true
+            column :id, Integer, serial: true
+            column :name_id, Integer, not_null: true
             column :value, Text
-            column :url_id, Integer, :not_null => true
+            column :url_id, Integer, not_null: true
           end
 
           name_ids = {}
@@ -78,10 +78,10 @@ module Ronin
 
           drop_table :ronin_url_query_params
           create_table :ronin_url_query_params do
-            column :id, Integer, :serial => true
-            column :name, String, :length => 256, :not_null => true
+            column :id, Integer, serial: true
+            column :name, String, length: 256, not_null: true
             column :value, Text
-            column :url_id, Integer, :not_null => true
+            column :url_id, Integer, not_null: true
           end
 
           query_params.each do |row|
