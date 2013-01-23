@@ -593,7 +593,7 @@ module Ronin
 
             # append the arguments to the banner
             self.class.each_argument do |name|
-              opts.banner << " #{name.to_s.upcase}"
+              opts.banner << " #{name.upcase}"
             end
 
             opts.separator ''
@@ -611,7 +611,7 @@ module Ronin
 
               self.class.each_argument do |name|
                 param = get_param(name)
-                name  = name.to_s.upcase
+                name  = name.upcase.to_s
                 desc  = param.description
 
                 opts.separator "    #{name.ljust(33)}#{desc}"

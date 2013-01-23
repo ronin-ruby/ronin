@@ -99,7 +99,7 @@ module Ronin
     #
     def digest(algorithm,options={})
       digest_class = begin
-                       Digest.const_get(algorithm.to_s.upcase)
+                       Digest.const_get(algorithm.upcase)
                      rescue LoadError
                        raise(ArgumentError,"Unknown Digest algorithm #{algorithm}")
                      end
