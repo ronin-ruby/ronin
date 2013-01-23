@@ -116,7 +116,11 @@ module Ronin
         # @api public
         #
         def licensed_under(name)
-          self.license = Ronin::License.predefined_resource(name)
+          unless License.methods(false).include?(name)
+            raise(ArgumentError,"unknown license: #{name}")
+          end
+
+          self.license = License.send(name)
         end
       end
     end

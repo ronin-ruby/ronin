@@ -41,33 +41,6 @@ module Ronin
     property :address_length, Integer, :required => true
 
     #
-    # Defines a new pre-defined Arch.
-    #
-    # @param [Symbol, String] name
-    #   The name of the architecture.
-    #
-    # @param [Hash] options
-    #   Additional options.
-    #
-    # @option options [Symbol, String] :endian
-    #   The endianness of the architecture.
-    #
-    # @option options [Integer] :address_length
-    #   The address-length of the architecture.
-    #
-    # @example Defining a pre-defined Arch
-    #   Arch.predefine :alpha, :endian => :big, :address_length => 8
-    #
-    # @example Retrieving a pre-defined Arch
-    #   Arch.alpha
-    #
-    # @api private
-    #
-    def self.predefine(name,options={})
-      super(name,{:name => name}.merge(options))
-    end
-
-    #
     # The x86 Architecture
     #
     # @return [Arch]
