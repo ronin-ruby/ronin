@@ -18,7 +18,6 @@
 #
 
 require 'ronin/ui/cli/printing'
-require 'ronin/support/inflector'
 
 require 'parameters'
 require 'parameters/options'
@@ -137,8 +136,10 @@ module Ronin
         # @api semipublic
         #
         def self.command_name
-          @command_name ||= Support::Inflector.underscore(
-            self.name.sub('Ronin::UI::CLI::Commands::','').gsub('::',':')
+          @command_name ||= (
+            name.sub('Ronin::UI::CLI::Commands::','').split('::').map { |w|
+              w.gsub(/[^A-Z][A-Z]/) { |s| "#{s[0]}_#{s[1]}" }.downcase
+            }.join(':')
           )
         end
 
