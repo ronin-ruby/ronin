@@ -169,8 +169,8 @@ module Ronin
     # @param [IPAddr, String] addr
     #   The IP address to lookup.
     #
-    # @param [String] nameserver
-    #   The optional nameserver to query.
+    # @param [Array<String>, String] nameservers
+    #   The optional nameserver(s) to query.
     #
     # @return [Array<HostName>]
     #   The host names associated with the IP address.
@@ -179,11 +179,11 @@ module Ronin
     #
     # @api public
     #
-    def self.lookup(addr,nameserver=nil)
+    def self.lookup(addr,nameservers=[])
       addr = addr.to_s
       ip = IPAddress.first_or_new(address: addr)
 
-      resolver = Resolv.resolver(nameserver)
+      resolver = Resolv.resolver(*nameservers)
       hosts = begin
                 resolver.getnames(addr)
               rescue
@@ -202,8 +202,8 @@ module Ronin
     #
     # Looks up all IP Addresses for the host name.
     #
-    # @param [String] nameserver
-    #   The optional nameserver to query.
+    # @param [Array<String>, String] nameservers
+    #   The optional nameserver(s) to query.
     #
     # @return [Array<IPAddress>]
     #   The IP Addresses for the host name.
@@ -212,8 +212,8 @@ module Ronin
     #
     # @api public
     #
-    def lookup!(nameserver=nil)
-      resolver = Resolv.resolver(nameserver)
+    def lookup!(nameservers=[])
+      resolver = Resolv.resolver(*nameservers)
       ips = begin
               resolver.getaddresses(self.address)
             rescue
