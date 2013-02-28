@@ -48,6 +48,9 @@ module Ronin
     include Model::HasLicense
     include DataPaths
 
+    # Directory which repositories are installed into
+    DIRECTORY = File.join(Config::PATH,'repos')
+
     # The default domain that repositories are added from
     LOCAL_DOMAIN = 'localhost'
 
@@ -310,7 +313,7 @@ module Ronin
         raise(DuplicateRepository,"a Repository already exists with the name #{name.dump} from domain #{domain.dump}")
       end
 
-      path = File.join(Config::REPOS_DIR,name,domain)
+      path = File.join(DIRECTORY,name,domain)
 
       # pull down the remote repository
       local_repo = remote_repo.pull(path)

@@ -39,9 +39,6 @@ module Ronin
     # Configuration files directory
     CONFIG_DIR = File.join(PATH,'config')
 
-    # Directory which repositories are installed into
-    REPOS_DIR = File.join(PATH,'repos')
-
     # Temporary file directory
     TMP_DIR = File.join(PATH,'tmp')
 
