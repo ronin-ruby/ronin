@@ -18,6 +18,7 @@
 #
 
 require 'ronin/ui/cli/printing'
+require 'ronin/installation'
 
 require 'parameters'
 require 'parameters/options'
@@ -128,6 +129,8 @@ module Ronin
           super()
 
           initialize_params(options)
+
+          @option_parser = option_parser
         end
 
         #
@@ -200,7 +203,7 @@ module Ronin
         # @api semipublic
         #
         def start(argv=ARGV)
-          arguments = option_parser.parse(argv)
+          arguments = @option_parser.parse(argv)
 
           # set additional arguments
           self.class.each_argument do |name|
@@ -262,6 +265,30 @@ module Ronin
           return true
         ensure
           cleanup
+        end
+
+        #
+        # Displays help information for the command.
+        #
+        # @since 1.6.0
+        #
+        # @api semipublic
+        #
+        def help
+          man_page = "ronin-#{self.class.command_name.tr(':','-')}.1"
+
+          # attempt to find the command's man-page
+          Installation.paths.each do |path|
+            man_path = File.join(path,'man',man_page)
+
+            if File.file?(man_path)
+              system('man',man_path)
+              return
+            end
+          end
+
+          # fallback to displaying the options
+          puts @option_parser
         end
 
         #
@@ -602,6 +629,11 @@ module Ronin
 
             self.class.each_option do |name,options|
               Parameters::Options.define(opts,get_param(name),options)
+            end
+
+            opts.on('-h','--help','Views the man-page') do
+              help
+              exit
             end
 
             yield opts if block_given?
