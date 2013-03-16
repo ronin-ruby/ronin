@@ -211,10 +211,7 @@ module Ronin
             end
         
       ips.map! do |addr|
-        IPAddress.first_or_create(
-          address: addr,
-          host_names: [host]
-        )
+        IPAddress.first_or_create(address: addr, host_names: [host])
       end
 
       return ips
@@ -242,10 +239,7 @@ module Ronin
               end
 
       hosts.map! do |name|
-        HostName.first_or_create(
-          address: name,
-          ip_addresses: [self]
-        )
+        HostName.first_or_create(address: name, ip_addresses: [self])
       end
 
       return hosts
