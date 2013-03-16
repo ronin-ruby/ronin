@@ -127,7 +127,6 @@ module Ronin
         #
         def initialize(options={})
           super()
-
           initialize_params(options)
 
           @option_parser = option_parser
