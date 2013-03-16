@@ -18,7 +18,7 @@
 #
 
 require 'ronin/extensions/regexp'
-require 'ronin/extensions/resolv'
+require 'ronin/network/dns'
 require 'ronin/model/importable'
 require 'ronin/address'
 require 'ronin/ip_address'
@@ -183,7 +183,7 @@ module Ronin
       addr = addr.to_s
       ip = IPAddress.first_or_new(address: addr)
 
-      resolver = Resolv.resolver(*nameservers)
+      resolver = Network::DNS.resolver(nameservers)
       hosts = begin
                 resolver.getnames(addr)
               rescue
@@ -213,7 +213,7 @@ module Ronin
     # @api public
     #
     def lookup!(nameservers=[])
-      resolver = Resolv.resolver(*nameservers)
+      resolver = Network::DNS.resolver(nameservers)
       ips = begin
               resolver.getaddresses(self.address)
             rescue
