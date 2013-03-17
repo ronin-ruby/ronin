@@ -185,6 +185,17 @@ module Ronin
         end
 
         #
+        # Displays help information for the command.
+        #
+        # @since 1.6.0
+        #
+        # @api semipublic
+        #
+        def self.help
+          new.help
+        end
+
+        #
         # Starts the command with the given command-line arguments.
         #
         # @param [Array<String>] argv
