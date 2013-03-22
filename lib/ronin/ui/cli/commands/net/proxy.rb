@@ -19,6 +19,7 @@
 
 require 'ronin/ui/cli/command'
 require 'ronin/network/tcp/proxy'
+require 'ronin/network/ssl/proxy'
 require 'ronin/network/udp/proxy'
 
 require 'hexdump/dumper'
@@ -42,6 +43,7 @@ module Ronin
           #         --[no-]silent                Silence all output.
           #     -t, --[no-]tcp                   TCP Proxy.
           #                                      Default: true
+          #     -S, --[no-]ssl                   SSL Proxy.
           #     -u, --[no-]udp                   UDP Proxy.
           #     -x, --[no-]hexdump               Enable hexdump output.
           #     -H, --host [HOST]                Host to listen on.
@@ -79,6 +81,10 @@ module Ronin
                          default:     true,
                          flag:        '-t',
                          description: 'TCP Proxy'
+
+            option :ssl, type:        true,
+                         flag:        '-S',
+                         description: 'SSL Proxy'
 
             option :udp, type:        true,
                          flag:        '-u',
@@ -337,6 +343,7 @@ module Ronin
             #
             def proxy_class
               if    udp? then Network::UDP::Proxy
+              elsif ssl? then Network::SSL::Proxy
               elsif tcp? then Network::TCP::Proxy
               end
             end

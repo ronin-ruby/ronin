@@ -18,6 +18,9 @@ Starts the Ronin TCP/UDP Proxy.
 `--[no-]tcp`
 	Enables or disables TCP mode.
 
+`--[no-]ssl`
+  Enables or disables SSL mode.
+
 `--[no-]udp`
 	Enables or disables UDP mode.
 
