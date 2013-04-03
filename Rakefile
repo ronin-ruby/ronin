@@ -19,7 +19,7 @@ end
 require 'rake'
 
 require 'rubygems/tasks'
-Gem::Tasks.new(:sign => {:checksum => true, :pgp => true}) do |tasks|
+Gem::Tasks.new(sign: {checksum: true, pgp: true}) do |tasks|
   tasks.console.command = 'ripl'
   tasks.console.options = %w[
     -rripl/multi_line
@@ -30,13 +30,13 @@ end
 
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
-task :test => :spec
+task :test    => :spec
 task :default => :spec
 
 require 'dm-visualizer/rake/graphviz_task'
 DataMapper::Visualizer::Rake::GraphVizTask.new(
-  :include => %w[lib],
-  :require => %w[
+  include: %w[lib],
+  require: %w[
     ronin/arch
     ronin/address
     ronin/author
