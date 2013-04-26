@@ -171,7 +171,7 @@ Remove a Database:
 * [ripl-short_errors] ~> 0.1
 * [ripl-color_result] ~> 0.3
 * [ripl-shell_commands] ~> 0.1
-* [ronin-support] ~> 0.5
+* [ronin-support] ~> 0.6
 
 ## Install
 
