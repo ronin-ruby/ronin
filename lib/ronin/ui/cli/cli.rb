@@ -128,7 +128,7 @@ module Ronin
         name = argv.first
 
         # run the default command if an option or no arguments were given
-        if (name.nil? || name[0,1] == '-')
+        if (name.nil? || name.start_with?('-'))
           name = DEFAULT_COMMAND
         else
           argv = argv[1..-1]
