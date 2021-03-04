@@ -20,7 +20,7 @@
 require 'ronin/database'
 
 require 'rspec'
-require 'tmpdir'
+require 'tempfile'
 
 RSpec.configure do |spec|
   spec.before(:suite) do
