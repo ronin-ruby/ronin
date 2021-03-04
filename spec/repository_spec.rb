@@ -8,6 +8,8 @@ describe Repository do
 
   subject { described_class }
 
+  before(:all) { MyScript.auto_migrate! }
+
   describe "find" do
     it "should be able to retrieve an Repository by name" do
       repo = subject.find('local')
