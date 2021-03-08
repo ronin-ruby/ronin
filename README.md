@@ -172,6 +172,7 @@ Remove a Database:
 * [ripl-color_result] ~> 0.3
 * [ripl-shell_commands] ~> 0.1
 * [ronin-support] ~> 0.6
+* [ronin-db] ~> 0.1
 
 ## Install
 
@@ -215,6 +216,7 @@ along with Ronin.  If not, see <https://www.gnu.org/licenses/>.
 [Repositories]: https://github.com/ronin-rb/example-repo
 
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
+[ronin-db]: https://github.com/ronin-rb/ronin-db#readme
 [ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
 [ronin-scanners]: https://github.com/ronin-rb/ronin-scanners#readme
 
