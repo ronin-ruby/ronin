@@ -26,6 +26,8 @@ gem 'ronin-support',	'~> 0.6', git: "#{RONIN_URI}/ronin-support.git",
                                 branch: '0.6.0'
 gem 'ronin-db', '~> 0.1', git: "#{RONIN_URI}/ronin-db.git",
                           branch: 'main'
+gem 'ronin-repos', '~> 0.1', git: "#{RONIN_URI}/ronin-repos.git",
+                             branch: 'main'
 
 group :development do
   gem 'rake'

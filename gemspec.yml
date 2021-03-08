@@ -83,6 +83,7 @@ dependencies:
   # Ronin dependencies:
   ronin-support: ~> 0.6
   # ronin-db: ~> 0.1
+  # ronin-repos: ~> 0.1
 
 development_dependencies:
   bundler: ~> 2.0
